@@ -1,0 +1,26 @@
+.offcanvas-header {
+    padding: 1rem;
+}
+
+.nav-link {
+    font-size: 1rem;
+    /* color: #495057 !important; */
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    transition: background-color 0.2s;
+}
+
+.nav-link:hover {
+    background-color: #e9ecef;
+    color: #212529 !important;
+}
+
+.btn-danger {
+    padding: 0.75rem;
+    font-size: 1rem;
+    text-align: center;
+}
+
+.offcanvas-body {
+    padding: 1rem;
+}

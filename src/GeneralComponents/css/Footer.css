@@ -1,0 +1,38 @@
+/* Footer.css */
+.custom-footer-bg-dark{
+  background-color: #29386B;
+}
+
+/* -----------------------------------------Previous Teams styling----------------------------------------------- */
+
+/* 
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+} */
+
+/* Footer.css */
+/* .footer {
+  width: 100%;
+  padding: 20px 0;
+  background-color: #29386B;
+  color: #fff;
+  text-align: center;
+} */
+
+/* .footer-content p {
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+  text-align: center;
+} */
+
+/* Additional styles to ensure that your content is above the footer */
+/* .content {
+  min-height: calc(
+    100% - 40px
+  );
+  padding-bottom: 40px;
+} */

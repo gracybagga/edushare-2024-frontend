@@ -1,0 +1,51 @@
+The errors you're encountering indicate that the required modules react-router-dom, axios, jwt-decode, and others are not found. These are commonly caused by either missing dependencies in your node_modules folder or incorrectly installed packages. Here's what you can do to resolve the issue:
+
+1. Missing Dependencies
+The errors suggest that your project is missing the required dependencies (react-router-dom, axios, jwt-decode, etc.). You need to ensure that all required packages are installed.
+
+Solution:
+Run the following command in your project directory to install all the required dependencies listed in your package.json:
+
+npm install
+
+If that doesn't resolve the issue, install the missing dependencies individually:
+
+npm install react-router-dom axios jwt-decode @fortawesome/react-fontawesome @fortawesome/free-solid-svg-icons react-chartjs-2 chart.js
+This will install the missing packages, and your project should have access to them.
+
+2. Check for Package Installation
+Ensure that the required modules are listed as dependencies in your package.json. For example:
+
+"dependencies": {
+  "axios": "^0.21.1",
+  "react-router-dom": "^6.0.0",
+  "jwt-decode": "^3.1.2",
+  "react-chartjs-2": "^3.0.0",
+  "chart.js": "^3.5.0",
+  "@fortawesome/react-fontawesome": "^0.1.14",
+  "@fortawesome/free-solid-svg-icons": "^5.15.3"
+}
+If they're not present, add them manually to the dependencies section and run npm install again.
+
+3. Clear npm Cache
+Sometimes, your npm cache may cause issues. You can try clearing it and reinstalling the packages:
+
+npm cache clean --force
+npm install
+
+4. Check for Typos in Import Paths
+Ensure that the import paths in your code are correct. For example:
+
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import axios from 'axios';
+Also, verify that you're importing files and components correctly from your local project.
+
+5. Rebuild Your Project
+After installing the dependencies, try rebuilding your project by running:
+
+npm run build
+
+Then start the development server again:
+
+npm start
+This should resolve most of the missing module errors you're facing. 

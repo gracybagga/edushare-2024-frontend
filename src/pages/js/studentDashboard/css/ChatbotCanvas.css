@@ -1,0 +1,48 @@
+.offcanvas-header {
+    padding: 1rem;
+}
+
+.offcanvas-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem; /* Spacing between messages */
+}
+
+.chat-message {
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    margin-bottom: 0.5rem;
+    max-width: 75%;
+    word-wrap: break-word;
+}
+
+.bot-message {
+    background-color: #e9ecef;
+    color: #343a40;
+    align-self: flex-start;
+    text-align: left;
+}
+
+.user-message {
+    background-color: #007bff;
+    color: white;
+    align-self: flex-end;
+    text-align: right;
+}
+
+.chat-input-container {
+    display: flex;
+    align-items: center;
+}
+
+.input-group {
+    width: 100%;
+}
+
+input.form-control {
+    border-radius: 0.25rem 0 0 0.25rem;
+}
+
+button.btn {
+    border-radius: 0 0.25rem 0.25rem 0;
+}

@@ -1,0 +1,6 @@
+.header {
+  width: 100%;
+  height: auto; /* Adjust based on your design */
+  background-color: #ffffff; /* Or any other color as per your design */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional, adds a shadow for depth */
+}

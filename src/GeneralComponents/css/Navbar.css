@@ -1,0 +1,136 @@
+/* ---------------------111024-------------------------- */
+
+/* Custom navbar-light */
+.custom-navbar-dark {
+  color: white; /* light text color */
+}
+
+.custom-navbar-dark .navbar-nav .nav-link {
+  color: #ffffff; /* Primary link color  */
+}
+
+.custom-navbar-dark .navbar-nav .nav-link:hover {
+  color: #565f7b; /* Darker blue for hover state */
+  scale: 1.1;
+}
+
+/* Custom bg-light */
+.custom-bg-dark {
+  background-color: #7991e3; /* dark blue background color */
+}
+
+.custom-navbar-brand{
+  color: white;
+  font-weight: bolder; 
+  &:hover{
+    color: white;
+  }
+}
+
+/* reused previous team's code */
+.navbar-logo-img {
+  height: 40px; 
+  margin-right: 10px; 
+}
+
+
+/* ---------------------111024-------------------------- */
+
+/* commented previous teams navbar container styling */
+/* .navbar {
+  background-color: #29386b;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} */
+
+/* .navbar-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 5%;
+} */
+
+/* .navbar-logo {
+  color: #f6f6f6;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  margin-right: 20px;
+} */
+
+/* .navbar-links {
+  padding-left: 0;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-grow: 1;
+} */
+
+/* .navbar-links a {
+  color: #f6f6f6;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+}
+.navbar-btn a {
+  color: #f6f6f6;
+}
+.navbar-btn {
+  color: #f6f6f6;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border: none;
+  background: none;
+  cursor: pointer;
+} */
+
+/* .navbar-btn-register {
+  background-color: #e7e7e7;
+  color: #2c3e50;
+  border-radius: 2px;
+  margin-left: 10px;
+}
+.logo-container {
+  display: flex;
+  align-items: center;
+} */
+
+/* .navbar-logo-img {
+  height: 40px; 
+  margin-right: 10px; 
+} */
+
+/* Add responsiveness if needed */
+/* ------Not needed anymore. Bootstrap providing it now 111024 GB---------------- */
+/* @media screen and (max-width: 960px) {
+  .navbar-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .navbar-links {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .navbar-links a,
+  .navbar-btn {
+    width: 100%;
+    text-align: center;
+  }
+  .logo-container {
+    justify-content: center;
+  }
+
+  .navbar-logo-img {
+    height: 35px; 
+  }
+} */

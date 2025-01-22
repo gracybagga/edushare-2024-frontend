@@ -1,0 +1,72 @@
+The errors and warnings you're seeing can be broken down into two main categories: Module not found errors and ESLint warnings. Let me walk you through both.
+
+1. Module Not Found Errors
+The most critical errors are these lines:
+
+Module not found: Error: Can't resolve '../../notificationAPI' in 'C:\D\Sem 5 - EduShare\2024-EduShare\edushare-frontend\frontend\src\Dashboard\js'
+These errors indicate that your code is trying to import a module named notificationAPI from a relative path, but Webpack cannot find it in the specified location (../../notificationAPI). This could be due to:
+
+File Missing: The notificationAPI file may have been deleted or moved. You can try searching for it in your project to ensure it exists at the expected location.
+
+Wrong Path: The path ../../notificationAPI may not be correct. Check whether this file is in the correct folder relative to the Dashboard/js directory. If the file is in a different location, update the import paths accordingly.
+
+To fix this:
+
+Verify the existence of notificationAPI.js (or a similar file).
+If the file exists, check the import path and correct it if necessary.
+If the file is missing, restore it from your version control system or add the missing code.
+
+
+2. ESLint Warnings
+These warnings are about unused variables, incorrect dependencies in useEffect, and a few other code style issues. Here's a breakdown of some common ones:
+
+Unused Variables (e.g., 'navigate' is assigned a value but never used):
+These warnings indicate that certain variables are being defined in your code but are never used anywhere. For example:
+
+python code:
+
+'navigate' is assigned a value but never used no-unused-vars
+
+To fix this:
+
+If you need these variables, find where they should be used in the code.
+If you don't need them, simply remove the variable declarations.
+
+Missing Dependencies in useEffect:
+For example:
+
+arduino code
+React Hook useEffect has missing dependencies: 'decodedToken._id', 'fetchAllSubjects', and 'fetchSubjects'
+This warning suggests that the dependencies in the useEffect dependency array are incomplete. The rule is that any variables or functions used inside useEffect should be listed in its dependency array. If these are missing, the hook may not behave as expected.
+
+To fix this:
+
+Include the missing dependencies in the useEffect dependency array.
+If the dependencies are correct as they are, you can suppress the warning by adding the correct dependencies.
+
+Other Issues:
+Unreachable Code: For example:
+
+css code
+Unreachable code no-unreachable
+This warning means you have code that will never be executed (e.g., after a return statement). You should remove such code to clean up the file.
+
+A11y (Accessibility) Warnings:
+
+vbnet code
+img elements must have an alt prop, either with meaningful text, or an empty string for decorative images
+This is a good practice for web accessibility. Make sure all your <img /> tags have an alt attribute.
+
+Action Steps:
+Fix Module Not Found Errors:
+
+Check the file paths and ensure notificationAPI exists where it's supposed to.
+Address Unused Variables:
+
+Remove or use the variables defined but never used (like navigate, setUserXp, etc.).
+Fix useEffect Warnings:
+
+Make sure all variables inside useEffect are listed in its dependency array. If you don't need them, remove them from the effect.
+Fix Code Style Issues:
+
+Remove unreachable code and fix accessibility warnings.

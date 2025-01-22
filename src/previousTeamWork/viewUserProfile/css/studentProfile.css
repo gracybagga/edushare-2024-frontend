@@ -1,0 +1,99 @@
+/* studentProfile.css */
+body {
+    font-family: 'Open Sans', sans-serif;
+    color: #333;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.profile-container {
+    border: 2px solid #29386B;
+    padding: 30px;
+    border-radius: 10px;
+    max-width: 1000px; /* Set your desired width here */
+    margin: auto;
+    background-color: #fff;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+    font-family: 'Roboto Slab', serif;
+    color: #29386B;
+    margin-bottom: 20px;
+    font-size: 36px;
+}
+
+.user-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background-color: #DDD;
+    margin-bottom: 30px;
+    background-size: cover;
+    background-position: center;
+}
+
+.xp-bar-container {
+    background-color: #EEE;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 30px;
+}
+
+.xp-bar {
+    height: 20px;
+    width: 80%;
+    background-color: #3F0FA2;
+    border-radius: 3px;
+    text-align: center;
+    line-height: 20px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    position: relative;
+}
+
+.user-info p {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.account-setup {
+    background-color: #F0F0F0;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 30px;
+}
+
+.account-setup p {
+    font-size: 20px;
+    margin-bottom: 15px;
+    color: #29386B;
+}
+
+.account-setup ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.account-setup li {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.back-button {
+    background-color: #29386B;
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 24px;
+    transition: background-color 0.3s;
+}
+
+.back-button:hover {
+    background-color: #1E2859;
+}

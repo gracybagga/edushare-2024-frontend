@@ -1,0 +1,55 @@
+/* CalendarCardDB.css */
+
+/* Light theme */
+.calendar-light {
+    background-color: #f8f9fa;
+    color: #2c2c2c;
+    border-radius: 10px;
+    padding: 0;
+}
+  
+.calendar-light .react-calendar__tile {
+    background-color: #ffffff;
+    color: #2c2c2c;
+    border-radius: 5px;
+}
+  
+.calendar-light .react-calendar__tile--active {
+    background-color: #007bff;
+    color: #ffffff;
+}
+  
+/* Dark theme */
+.calendar-dark {
+    background-color: #2c2c2c;
+    color: #2c2c2c;
+    border-radius: 10px;
+    padding: 0;
+}
+  
+.calendar-dark .react-calendar__tile {
+    background-color: #3a3a3a;
+    color: #f8f9fa;
+    /* border-radius: 5px; */
+    &:hover{
+       background-color: #b6b2b2;
+    }
+}
+  
+.calendar-dark .react-calendar__tile--active {
+    background-color: #4caf50;
+    color: #ffffff;
+}
+
+/* Add a border for today's date */
+.react-calendar__tile.calendar-today {
+    border: 2px solid #007bff !important; /* Always visible border */
+}
+  
+/* Styling adjustments for dark mode */
+.calendar-dark .react-calendar__tile.calendar-today {
+    border-color: #4caf50 !important; /* Green border for dark mode */
+}
+  
+  
+  

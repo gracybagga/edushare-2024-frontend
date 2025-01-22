@@ -1,0 +1,50 @@
+.field-of-study-container {
+  font-family: 'Arial', sans-serif; /* Use the font from your design */
+  background-color: #6c5ce7; /* Match the background color from your image */
+  border-radius: 20px;
+  padding: 40px; /* Increased padding */
+  height: auto; /* Adjust height to auto to contain the content */
+  width: 80%;
+  height:75%; /* Increase width to give more space */
+  /* Set a max-width to keep it from getting too large on bigger screens */
+  box-shadow: 0 8px 30px rgba(0,0,0,0.2); /* Increased shadow for depth */
+  margin: 2rem auto; /* Center the container with some margin */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center children horizontally */
+  justify-content: space-around; /* Distribute space evenly */
+}
+
+.doughnut-chart {
+  position: relative;
+  width: 100%; /* Use the full width for the chart */
+  height: 300%; /* Set a fixed height for the chart */
+}
+
+.doughnut-legend {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap; /* Wrap items to the next line if space runs out */
+  justify-content: center; /* Center the legend items */
+  padding: 0;
+  margin-top: 20px; /* Space above the legend */
+}
+
+.doughnut-legend-item {
+  display: flex;
+  align-items: center;
+  margin: 10px; /* Increased space between legend items */
+  font-size: 1rem; /* Enlarged font size for readability */
+}
+
+.legend-color-box {
+  width: 20px; /* Increased box size for visibility */
+  height: 20px; /* Increased box size for visibility */
+  margin-right: 10px; /* Space after the color box */
+  border-radius: 3px; /* Slightly rounded corners */
+}
+
+.legend-text {
+  font-size: 1.3rem; /* Enlarged font size for readability */
+  color: #ffffff; /* Change the color if required for better visibility */
+}

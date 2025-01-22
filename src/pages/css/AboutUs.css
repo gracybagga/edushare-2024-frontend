@@ -1,0 +1,12 @@
+/* Card styling for team members */
+.custom-card-img-top {
+  border-radius: 50%;
+  object-fit:cover;
+  max-height: 500px;
+}
+
+.custom-card-info-height{
+  min-height: 120px;
+}
+ 
+ /* --------------------------------111124--------------------------------- */

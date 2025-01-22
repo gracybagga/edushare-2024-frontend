@@ -1,0 +1,58 @@
+1. commented the header and hero-img-container component in content.js
+2/ created a custom carousel component and moved the content with in the header inside the carousel.
+Brought the carousel from the bootstrap components
+
+3. imported the carousel component inside the content.js
+
+4. adding some custom styling to carousel, while commented out the header and hero-img-section styling in content.css
+
+classes commented in content.css:
+.hero-image-containe
+.hero-image-container img:first-child
+.img1
+.img2
+.img3
+.hero-image-container img
+.header
+
+5. Created a copy of Content.js component and called it HomePage.js component. Copied the content of Content.js into homepage.js and adjusted the import paths.
+
+In App.js, used component HomePage instead of Content.js
+
+6. Archieved the Header.js component as it is not being used in App.js, rather the Navbar component is being called directly in App.js
+
+7. Added component directories for AboutPage, Mission, JoinUs
+
+8. Copied content.css into all components AboutPage, Mission, JoinUs and renamed it as per the directory name
+
+9. Took content of HomePage.js and split the div sections into the specific components of AboutPage, Mission, JoinUs
+
+10. Cleaned up the contents of components and css of AboutPage, Mission, JoinUs and HomePage components.
+Kept each section specific to its component.
+
+11. Now added route for each component: AboutPage, Mission, JoinUs and HomePage components in App.js. Import statements were added carefully.
+
+12. In App.js, commented out the use of Navbar component.
+
+13. Created a directory for general components. Moved the components along with the respective css and images of general components : 
+Navbar and Footer.
+
+14. Now since the use of Navbar was commented in App.js, i imported the Navbar from general components and used it in each of AboutPage, Mission, JoinUs and HomePage components
+
+15. Pulled Carousel out of the HomePage and made it a general component.
+Instead of hard-coding the image sources, I made Carousel component take in a prop of images array
+This way carousel can be reused in the project.
+Homepage -> imported the images there instead of Carousel component and made an array of them and passed them to carousel.
+
+Carousel now instead of having a hardcoded slides, uses map function of arrays to dynamicall map each image into bootstrap slide class.
+
+16. pulled the custom class of .custom-carousel-img from content.css and moved it into a new file called Carousel.css in general components directory and adjusted css imports in carousel.js
+
+17. Renamed Content.css in HomePage directory to HomePage.css and adjusted the imports of css in HomePage component.
+
+18. Added a HeroSection component after Navbar in HomePage. I used the hero section from bootstrap
+
+19. Created a FeatureSection Component. Used Grid from bootstrap in it.
+
+20. 
+

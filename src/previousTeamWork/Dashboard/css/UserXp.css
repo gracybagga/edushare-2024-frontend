@@ -1,0 +1,120 @@
+.user-xp-container {
+  position: relative;
+  width: 95%; /* Adjust this as needed for your layout */
+  height: 95%; /* Adjust this as needed for your layout */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff; /* Example background color, change as needed */
+  border-radius: 15px; /* Optional: if you want rounded corners */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Optional: if you want to add a shadow for depth */
+  padding: 20px; /* Adjust as needed */
+  box-sizing: border-box; /* To include padding in the width and height */
+}
+
+/* ...other styles... */
+
+  
+  /* Ensure the SVG fills its container */
+  .progress-ring {
+    width: 100%; /* Fill the width of the parent container */
+    height:270px; /* Maintain aspect ratio */
+  }
+  .progress-ring__circle {
+  /* ...other styles... */
+  transition: stroke-dashoffset 0.6s ease-out;
+}
+
+  /* Styles for the background and progress paths */
+  .progress-ring__circle-bg,
+  .progress-ring__circle {
+    stroke-linecap: round;
+  }
+  
+  /* Position text within the component */
+  .xp-text {
+    position: absolute;
+    top: 65%; /* Adjust if necessary to avoid overlap with the SVG */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2.5rem; /* Adjust as needed */
+    font-weight: bold;
+  }
+  
+  .xp-label {
+    position: absolute;
+    top: 50%; /* Adjust if necessary to position below the XP text */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1rem; /* Adjust as needed */
+  }
+  
+  /* Align the minimum and maximum XP values with the ends of the progress arc */
+  .xp-min-max {
+    position: absolute;
+    top: 88%; /* Position below the main XP text */
+    width: 96%;
+    display: flex;
+    justify-content:space-between;
+    padding: 0px; /* Add padding to align with the progress arc ends */
+    box-sizing: border-box;
+  padding-left: 10px;
+    font-size: 2rem;
+  }
+  
+  .xp-min,
+  .xp-max {
+    font-size: 0.9rem;
+  }
+  .xp-min{
+    margin-left: 40px;
+  }
+  /* UserXp.css */
+  .level-text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 10px 20px; /* Adjust padding to your preference */
+    /* background-color: #f8d568; A background color that will stand out, adjust as needed */
+    color: #333; /* Keep text color dark for contrast */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 2.5rem; /* Increase font size */
+    font-weight: bold; /* Optional: if you want the font to be bold */
+    border-top-left-radius: 10px; /* Optional: if you want rounded corners */
+    border-bottom-right-radius: 10px; /* Optional: to give a tab-like appearance */
+    z-index: 2; /* Ensure it's above other elements */
+  }
+    .badge-container {
+      position: absolute;
+    top: 0;
+    right: 0;
+    padding: 10px 20px; /* Adjust padding to your preference */
+    /* background-color: #f8d568; A background color that will stand out, adjust as needed */
+    color: #333; /* Keep text color dark for contrast */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 2.5rem; /* Increase font size */
+    font-weight: bold; /* Optional: if you want the font to be bold */
+    border-top-left-radius: 10px; /* Optional: if you want rounded corners */
+    border-bottom-right-radius: 10px; /* Optional: to give a tab-like appearance */
+    z-index: 2; /* Ensure it's above other elements */
+     }
+    
+  .badge-icon {
+    
+    width: 200px; /* Adjust based on layout */
+    height: 200px; /* Adjust based on layout */
+    box-shadow: 0px 0px 10px 3px rgba(255, 0, 0, 0.25); 
+    border-radius: 50%; /* Circle shape */
+    border: 2px solid #000000; /* White border */
+    transition: transform 0.3s ease; /* Smooth transition for hover effect */
+    
+    /* clip-path: circle(40%); */
+  }
+  
+  .badge-icon:hover {
+    transform: scale(1.1); /* Slightly enlarge on hover */
+  }
+
+
+  

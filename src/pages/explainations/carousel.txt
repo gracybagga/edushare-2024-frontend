@@ -1,0 +1,37 @@
+Bootstrap Classes Explanation
+carousel slide:
+
+carousel: This is the main class that sets up the carousel component, enabling it to have a sliding effect.
+slide: Adds a sliding animation effect to the carousel when transitioning between slides.
+data-bs-ride="carousel":
+
+This attribute enables automatic cycling of the carousel slides.
+carousel-inner:
+
+This class wraps the slides (items) of the carousel. It acts as a container for the different slides within the carousel.
+carousel-item:
+
+Represents each individual slide. It is a wrapper for the content of each slide.
+The active class on the first item ensures that this slide is shown first when the carousel loads.
+data-bs-interval="2000":
+
+This attribute specifies the time in milliseconds (2000ms = 2 seconds) for which each slide will be visible before transitioning to the next slide.
+d-block w-100:
+
+d-block: This sets the display property of the image to block, ensuring that the image is displayed as a block-level element.
+w-100: This sets the width of the image to 100% of its parent's width, making the image responsive.
+carousel-control-prev and carousel-control-next:
+
+These classes are used for navigation buttons to go to the previous and next slides, respectively.
+data-bs-target:
+
+Links the button to the specific carousel instance using the ID (#carouselExampleInterval).
+data-bs-slide="prev" and data-bs-slide="next":
+
+Controls the sliding direction for navigation buttons.
+carousel-control-prev-icon and carousel-control-next-icon:
+
+These classes render the icons for the previous and next controls using Bootstrap's built-in icons.
+visually-hidden:
+
+This is an accessibility class that hides the text visually while still making it accessible to screen readers.

@@ -1,0 +1,30 @@
+/* --------------------------------111124--------------------------------- */
+.custom-bg-container{
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.8), rgba(0, 30, 150, 0.2));
+}
+/* --------------------------------111124--------------------------------- */
+
+/* Hero Section */
+
+.custom-bg-primary{
+  background: linear-gradient(to right, rgba(0, 30, 150, 0.8), rgba(255, 255, 255, 0.8));
+  /* background: radial-gradient(circle, rgba(0, 30, 150, 0.8), rgba(255, 255, 255, 0.8)); */
+  /* background: linear-gradient(to right, rgba(0, 30, 150, 0.8), rgba(0, 30, 150, 0.4), rgba(255, 255, 255, 0)); */
+  /* background: linear-gradient(to bottom, rgba(0, 30, 150, 0.8), rgba(0, 30, 150, 0.5)); */
+}
+
+/* Features Section */
+.custom-middle-border{
+  border-left: 2px solid rgba(0, 30, 150, 0.8);
+  border-right: 2px solid rgba(0, 30, 150, 0.8);
+}
+
+/* Media Query for screen sizes below 768px */
+@media (max-width: 767.98px) {
+  .custom-middle-border {
+      border-left: none;
+      border-right: none;
+      border-top: 2px solid rgba(0, 30, 150, 0.8);
+      border-bottom: 2px solid rgba(0, 30, 150, 0.8);
+  }
+}

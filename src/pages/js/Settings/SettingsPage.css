@@ -1,0 +1,24 @@
+.settings-page {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .settings-page.light {
+    background-color: #ffffff;
+    color: #000000;
+  }
+  
+  .settings-page.dark {
+    background-color: #000000;
+    color: #ffffff;
+  }
+  
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  li {
+    margin: 10px 0;
+  }
+  

@@ -1,0 +1,92 @@
+111024 GB
+1. added meta deta description and title in index.html
+
+2. Installed dependencies:
+
+    a. npm install react-router-dom
+    b. npm install axios
+    c. npm install jwt-decode
+    d. npm install @fortawesome/react-fontawesome
+    e. npm install @fortawesome/free-solid-svg-icons
+    f. npm install react-chartjs-2
+    g. npm install chart.js
+
+Explanations:
+react-router-dom: Used for routing and navigation within a React application.
+
+axios: Used for making HTTP requests (API calls) from a React application.
+
+jwt-decode: Used to decode JSON Web Tokens and extract data from them.
+
+@fortawesome/react-fontawesome: A React component wrapper for Font Awesome icons.
+
+@fortawesome/free-solid-svg-icons: A set of free solid icons from Font Awesome for use with react-fontawesome.
+
+react-chartjs-2: A React wrapper for the Chart.js library to easily integrate charts into your React app.
+
+chart.js: The underlying JavaScript library for creating charts, used by react-chartjs-2.
+
+3. Package json has started to fill up now a bit:
+
+still missing from their package json:
+
+PROD dependencies (missing):
+
+@fortawesome/fontawesome-svg-core
+react-charts
+react-lottie-player
+react-router-dom
+
+SCRIPTS:
+same
+
+ESLINTCONFIG:
+same
+
+BROWSERSLIST:
+production and development are same
+
+
+PROXY (Missing)
+
+DEVDEPENDENCIES(missing)
+@babel/plugin-proposal-private-property-in-object
+
+4. Trying to compile again:
+
+Got lots of errors
+
+    a. Fix Module Not Found Errors: 
+    Check the file paths and ensure notificationAPI exists where it's supposed to.
+
+    b. Address Unused Variables:
+    Remove or use the variables defined but never used (like navigate, setUserXp, etc.).
+
+    c. Fix useEffect Warnings:
+    Make sure all variables inside useEffect are listed in its dependency array. If you don't need them, remove them from the effect.
+
+    d. Fix Code Style Issues:
+    Remove unreachable code and fix accessibility warnings
+
+5. Copied the notificationAPI file from previous team folder to this one.
+
+6. compilation completed without error in third attempt.
+
+7. Replaced the default favicon.ico with the new generated favicon.ico. 
+I used logo from the img directory in the HomePage component.
+
+8. overwrote the navbar component to make it use bootstrap classes so that i could bring responsiveness to the navbar and UX/UI better
+
+Added bootstrap css and bootstrap script to index.html in public directory
+
+9. In Navbar.css, created some custom implementation of bootstrap classes to overwrite them. they are as follows:
+
+.custom-navbar-dark, 
+.custom-navbar-dark .navbar-nav .nav-link ,
+.custom-navbar-dark .navbar-nav .nav-link:hover, 
+.custom-bg-dark, 
+.custom-navbar-brand,
+
+10. commented previous teams class classes in Navbar.css completely.
+
+11. wrapped the previous team's Navbar function component in bootstrap containers.

@@ -1,0 +1,109 @@
+.custom-switch .form-check-input {
+    width: 150px; /* 60px * 2.5 */
+    height: 75px; /* 30px * 2.5 */
+    background-color: #ddd;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s ease;
+  }
+  
+  .custom-switch .form-check-input:checked {
+    background-color: #333;
+  }
+  
+  .custom-switch .form-check-input::before {
+    content: "";
+    position: absolute;
+    top: 12.5px; /* 5px * 2.5 */
+    left: 12.5px; /* 5px * 2.5 */
+    width: 50px; /* 20px * 2.5 */
+    height: 50px; /* 20px * 2.5 */
+    background-color: white;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+  }
+  
+  .custom-switch .form-check-input:checked::before {
+    left: 87.5px; /* 35px * 2.5 */
+  }
+  
+  .custom-switch .form-check-label {
+    position: relative;
+    width: 150px; /* 60px * 2.5 */
+    height: 75px; /* 30px * 2.5 */
+  }
+  
+  .custom-switch .switch-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 3.75rem; /* 1.5rem * 2.5 */
+    color: white;
+  }
+  
+  .custom-switch .form-check-input:checked + .form-check-label .switch-icon {
+    transform: translate(-50%, -50%);
+  }
+  
+  .bg-secondary-custom{
+    background-color: #1f1f1f;
+  }
+
+  .metallic-button {
+    background: linear-gradient(145deg, #d43f3f, #a31414); /* Brighter red metallic gradient */
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    box-shadow: 
+      inset -2px -2px 5px #e05454, /* Top-left shadow */
+      inset 2px 2px 5px #791111,   /* Bottom-right shadow */
+      2px 2px 8px rgba(0, 0, 0, 0.3); /* Outer shadow */
+    transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+    cursor: pointer;
+    background-clip: padding-box;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  /* Add a shiny effect */
+  .metallic-button::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at 50% 50%, rgba(255, 130, 130, 0.5), rgba(255, 130, 130, 0) 70%);
+    opacity: 0;
+    transform: rotate(45deg);
+    pointer-events: none;
+    transition: opacity 0.3s, transform 0.5s;
+  }
+  
+  /* Hover and Active Effects */
+  .metallic-button:hover {
+    background: linear-gradient(145deg, #e05454, #c41717); /* Brighter hover gradient */
+    box-shadow: 
+      inset -2px -2px 8px #f26363,
+      inset 2px 2px 8px #8a1212,
+      4px 4px 10px rgba(0, 0, 0, 0.4);
+  }
+  
+  .metallic-button:hover::before {
+    opacity: 1;
+    transform: rotate(360deg);
+  }
+  
+  .metallic-button:active {
+    transform: scale(0.95);
+    box-shadow: 
+      inset -1px -1px 5px #f26363,
+      inset 1px 1px 5px #8a1212;
+  }
+  

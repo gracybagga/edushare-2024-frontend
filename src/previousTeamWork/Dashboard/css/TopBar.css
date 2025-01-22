@@ -1,0 +1,200 @@
+.top-bar {
+  position: sticky;
+  top: 0; /* Set to the top of the viewport */
+  z-index: 1000; /* Ensure it's above other content */
+  display: flex;
+  justify-content: center; /* Align children to the center */
+  align-items: center;
+  padding: 10px;
+  background-color: #e7e5e5;
+}
+
+/* Left side of the top bar */
+.top-bar-actions {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  position: absolute; /* Position the actions absolutely within the top-bar */
+  left: 200px; /* Adjust this value as needed */
+}
+
+.top-bar-actions button {
+  margin-right: 8px; /* space between buttons */
+  background-color: #2cbe4e;
+  border: 1px solid #d1d5da;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.top-bar-actions button:first-child {
+  margin-right: 64px; /* Adjust this value to increase the space between the buttons */
+}
+
+.top-bar-icons {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+.top-bar-icons .icon {
+  padding: 8px;
+  font-size: 20px;
+  cursor: pointer;
+  margin-right: 20px;
+  flex-shrink: 0;
+}
+
+.top-bar-icons .icon:hover {
+  color: #2cbe4e; /* Color change on hover, can be adjusted to your preference */
+}
+
+/* Center of the top bar */
+.search-bar {
+  display: flex;
+  justify-content: center;
+  flex-grow: 1; /* Allows the search bar to take up the remaining space */
+  order: 1; /* Ensure search bar is in the middle */
+  margin: 0 250px; /* Adjust this margin to position the search bar correctly */
+}
+
+.search-bar input[type="text"] {
+  padding: 5px 10px;
+  border: 1px solid #d1d5da;
+  border-radius: 5px;
+}
+
+.search-bar button {
+  background-color: #2cbe4e;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Right side of the top bar */
+.top-bar-icons {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  order: 2; /* Ensure this is on the right side */
+  padding-right: 20px;
+}
+
+.top-bar-icons i {
+  padding: 8px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* Hover effects */
+.top-bar-actions button:hover,
+.search-bar button:hover,
+.top-bar-icons i:hover {
+  opacity: 0.8;
+}
+
+/* Styles for the dropdown menu */
+.dropdown {
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%; /* Align the top of the dropdown with the bottom of the icon */
+  right: 0;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  z-index: 1001;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Style for buttons within the dropdown to make them look like links */
+.dropdown-content button {
+  color: black;
+  padding: 12px 16px;
+  border: none;
+  background: none;
+  top: 100%; /* Position directly below the dropdown toggle */
+  right: 0; /* Align to the right side of the .dropdown container */
+  text-align: left;
+  width: 100%;
+  text-decoration: none;
+  display: block;
+  white-space: nowrap;
+  z-index: 1001; /* Ensure it appears above other content */
+}
+
+.dropdown-content button:hover {
+  background-color: #ddd;
+}
+
+/* Styles specific to the search-dropdown */
+/* Styles specific to the search-dropdown */
+.search-dropdown {
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+}
+
+/* Style for the dropdown button */
+.search-dropdown button {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #2cbe4e;
+  cursor: pointer;
+  outline: none;
+  /* Set a fixed width or min-width for the button */
+  min-width: 100px; /* Adjust as needed */
+  height: 36px; /* Adjust as needed */
+  text-align: center; /* Align text to the center */
+  color: #fff; /* Text color */
+  font-weight: bold; /* Make text bold */
+  /* Ensuring the text doesn't overflow */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.search-dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-top: none;
+  min-width: 200px; /* this should match the width of the button */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1001; /* Make sure it's higher than other items but not interfering with modal dialogs etc. */
+  left: 0; /* Align with the left edge of the dropdown button */
+  top: 100%; /* Position below the dropdown button */
+}
+
+.search-dropdown:hover .search-dropdown-content {
+  display: block;
+}
+
+.search-dropdown-content button {
+  color: #333; /* Text color */
+  padding: 10px 16px;
+  border: none;
+  background: none;
+  text-align: left;
+  width: 100%;
+  text-decoration: none;
+  display: block;
+}
+
+.search-dropdown-content button:hover {
+  background-color: #f0f0f0; /* Hover background color */
+}
+.modalButton {
+  background-color: #f6f6f6;
+}

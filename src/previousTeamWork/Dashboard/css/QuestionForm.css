@@ -1,0 +1,69 @@
+/* QuestionForm.css */
+.question-form {
+    max-width: 800px; /* Set a max-width for the form */
+    margin: 0 auto; /* Center the form in the page */
+    padding: 20px; /* Add some padding around the form */
+    background: #f9f9f9; /* Light background color */
+    border-radius: 8px; /* Rounded corners for the form */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Slight shadow for depth */
+}
+
+.question-form label {
+    display: block; /* Ensure labels take up the full width */
+    margin-bottom: 10px; /* Add some space below each label */
+}
+
+.question-form input[type="text"],
+.question-form input[type="number"],
+.question-form select {
+    width: 100%; /* Full width inputs */
+    padding: 8px; /* Padding for inputs */
+    margin-bottom: 20px; /* Space below inputs */
+    border: 1px solid #ccc; /* Border for inputs */
+    border-radius: 4px; /* Rounded corners for inputs */
+}
+
+.question-form input[type="text"]:focus,
+.question-form input[type="number"]:focus,
+.question-form select:focus {
+    outline: none; /* Remove outline on focus */
+    border-color: #007bff; /* Highlight color for border */
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25); /* Glow effect */
+}
+
+.question-form button[type="submit"] {
+    background-color: #007bff; /* Background color for the submit button */
+    color: white; /* Text color for the submit button */
+    padding: 10px 15px; /* Padding for button */
+    border: none; /* Remove border */
+    border-radius: 4px; /* Rounded corners for button */
+    cursor: pointer; /* Pointer cursor on hover */
+    font-size: 16px; /* Larger font size */
+}
+
+.question-form button[type="submit"]:hover {
+    background-color: #0056b3; /* Darker background on hover */
+}
+
+.question-form-title {
+    text-align: center;
+    margin-bottom: 1rem; /* Add some space below the title */
+    font-size: 1.5rem; /* Adjust the size as needed */
+    color: #333; /* Adjust the color as needed */
+}
+
+.question-form-confirmation.success {
+    margin-top: 1rem;
+    text-align: center;
+    color: #28a745; /* Success color, change as needed */
+    font-weight: bold;
+}
+
+.question-form-confirmation.error {
+    margin-top: 1rem;
+    text-align: center;
+    color: #dc3545; /* Error color */
+    font-weight: bold;
+}
+
+/* Add additional styles as needed */
