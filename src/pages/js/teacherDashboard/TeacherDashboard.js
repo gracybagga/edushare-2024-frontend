@@ -10,10 +10,10 @@ import TogglerCard from "../../../generalDashboardComponents/TogglerCard";
 import RecentlyEnrolledCourses from "../../../generalDashboardComponents/RecentlyEnrolledCourses";
 import PopularCourses from "../../../generalDashboardComponents/PopularCourses";
 
-export default function StudentDashboard() {
+export default function TeacherDashboard() {
     const [isChatbotVisible, setIsChatbotVisible] = useState(false);
     const [theme, setTheme] = useState("light");
-    const [userName, setuserName] = useState("John Doe");
+    const [userName, setuserName] = useState("Mohammed Abbas");
 
     const [enrolledCourses, setenrolledCourses] = useState([
         { id:1, name: "React for Beginners", category: "Web Development", image: "https://media2.dev.to/dynamic/image/width=1080,height=1080,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F096baapsqqt9fks0us99.png" },

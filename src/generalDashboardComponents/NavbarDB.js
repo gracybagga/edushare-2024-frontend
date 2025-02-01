@@ -1,6 +1,6 @@
 import React from 'react';
 import 'bootstrap-icons/font/bootstrap-icons.css'
-import scholarship from "../../img/scholarship.png";
+import scholarship from "../pages/img/scholarship.png";
 
 export default function NavbarDB({ onToggleSidebar, onToggleChatbot, theme }) {
     return (

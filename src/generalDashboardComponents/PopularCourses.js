@@ -2,6 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const PopularCourses = ({ theme }) => {
+    let userRole = localStorage.getItem("userRole") || 'STUDENT';
+    let btnText = userRole === 'TEACHER' ? 'Request Assignment' : 'Enroll now';
     const courses = [
         {
             id: 1,
@@ -57,7 +59,7 @@ const PopularCourses = ({ theme }) => {
                             </div>
                             {/* Enroll Now Button */}
                             <Link to='/student-enrollment' >
-                                <button className={`btn btn-${theme==='light'?'primary':'secondary'} btn-lg rounded-pill`}>Enroll Now</button>
+                                <button className={`p-2 btn btn-${theme==='light'?'primary':'secondary'} btn-sm rounded-pill`}>{btnText}</button>
                             </Link>
                         </li>
                     ))}
