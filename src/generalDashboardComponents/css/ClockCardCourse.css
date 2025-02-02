@@ -1,0 +1,56 @@
+.clock-card-course {
+    /*background: linear-gradient(135deg, #6a11cb, #2575fc);*/
+    border-radius: 15px;
+    padding: 20px;
+    /*box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);*/
+    max-width: 600px;
+    min-height: 435px;
+    margin: auto;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    /* Added flexbox to center content vertically and horizontally */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.clock-container-course {
+    /* Ensure container flex works within card */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+}
+
+.clock-title-course {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 0;
+    color: black;
+}
+
+.styled-clock-course {
+    transform: scale(1.5);
+    border: 5px solid white;
+    border-radius: 50%;
+    padding: 20px;
+    margin-top:80px;
+    margin-bottom:80px;
+}
+
+.digital-time-course {
+    font-size: 1.2rem;
+    letter-spacing: 0.05em;
+    font-weight: bold;
+    animation: fade-in 1s ease-in-out;
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}

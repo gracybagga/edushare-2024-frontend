@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom"; // Import Link from react-router-dom to handle navigation between pages
 
 import "../css/Navbar.css"; // Import the CSS file for styling the Navbar
-import logoImage from "../img/logo.png"; // Import the logo image that will be displayed in the Navbar
+import scholarship from "../img/scholarship.png"; // Import the logo image that will be displayed in the Navbar
 
 
 // The Navbar functional component
@@ -17,7 +17,7 @@ function Navbar() {
         
         {/* Logo section with image and link */}
         <Link className="navbar-brand custom-navbar-brand" to="/">
-          <img src={logoImage} alt="Logo" className="navbar-logo-img" />
+          <img src={scholarship} alt="Logo" className="navbar-logo-img" />
           EduShare
         </Link>
         
@@ -51,15 +51,15 @@ function Navbar() {
               <Link to="/joinus" className="nav-link">Join Our Journey</Link>
             </li>
             <li className="nav-item">
-              <Link to="/courselist" className="nav-link">List of courses</Link>
+              <Link to="/courselist" className="nav-link">List Of Courses</Link>
             </li>
           </ul>
           
           {/* Navbar actions (Login and Register buttons) */}
           <div className="navbar-actions">
-            <Link to="/become-teacher" className="btn btn-outline-dark me-2 mb-1">Register as a Teacher</Link>
-            <Link to="/login" className="btn btn-outline-dark me-2 mb-1">Login</Link>
-            <Link to="/register" className="btn btn-outline-dark me-2 mb-1">Register</Link>
+            {/*<Link to="/login" className="btn btn-outline-dark me-2 mb-1">Login</Link>*/}
+            {/*<Link to="/register" className="btn btn-outline-dark me-2 mb-1">Register as Student</Link>*/}
+            {/*<Link to="/become-teacher" className="btn btn-outline-dark me-2 mb-1">Register as a Teacher</Link>*/}
           </div>
         </div>
       </div>

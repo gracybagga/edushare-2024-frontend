@@ -25,6 +25,7 @@ import LoginPage from "./pages/js/loginPage/LoginPage";
 import TeacherRegistration from "./TeacherRegistration/TeacherRegistration";
 import StudentDashboard from "./pages/js/studentDashboard/StudentDashboard"
 import TeacherDashboard from "./pages/js/teacherDashboard/TeacherDashboard";
+import StudentCourseDashboard from "./pages/studentCourse/StudentCourseDashboard";
 
 // This component is responsible for rendering the Navbar and Footer conditionally, as well as the routes
 function MainApp() {
@@ -44,6 +45,7 @@ function MainApp() {
         <Route path="/login" element={<LoginPage />} />
         <Route path = "/student-dashboard" element = {<StudentDashboard/>}/>
         <Route path = "/teacher-dashboard" element = {<TeacherDashboard/>}/>
+        <Route path = "/student-course-dashboard" element = {<StudentCourseDashboard/>}/>
 
         {/*only user*/}
         {/* Created by previous team */}

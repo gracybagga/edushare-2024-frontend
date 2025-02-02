@@ -45,7 +45,7 @@ export default function HeroSection() {
         <div className="container">
             <h1>Learn New Skills Online Anytime, Anywhere</h1>
             <p>Join thousands of learners from around the world</p>
-            <button className="btn btn-light btn-lg mt-3" onClick={getRandomTipHandler}>Knowledge for the day</button>
+            <button className="btn btn-light btn-lg mt-3 rounded-pill" onClick={getRandomTipHandler}>Knowledge for the day</button>
             {/* <Modal knowledgeTip='Hi!'/> */}
         </div>
     </section>
