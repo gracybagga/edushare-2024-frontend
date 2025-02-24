@@ -9,7 +9,7 @@ import "../../css/Mission.css";
 
 export default function Mission() {
   return (
-    <>
+    <div>
       <Navbar/>
       <div className=" custom-bg-container">
         <MissionStatement/>
@@ -18,7 +18,7 @@ export default function Mission() {
         <MissionCallToAction/>
       </div>
       <Footer/>  
-    </>
+    </div>
   )
 }
 

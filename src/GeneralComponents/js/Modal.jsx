@@ -36,7 +36,7 @@ export default function Modal() {
     };
 
   return (
-    <>
+    <div>
         {/* Button to trigger Modal */}
         <button type="button" className="btn btn-primary" onClick={getRandomTipHandler} data-bs-toggle="modal" data-bs-target="#staticBackdrop">
             Knowledge for the day
@@ -60,6 +60,6 @@ export default function Modal() {
             </div>
         </div>
         </div>
-    </>
+    </div>
   )
 }

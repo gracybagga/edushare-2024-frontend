@@ -9,7 +9,7 @@ import scholarship from "../img/scholarship.png";
 
 const StudentCourseDashboard = () => {
     const location = useLocation();
-    const theme = location.state?.theme || "light"; // Extract theme from location.state
+    const theme = location.state?.theme || "dark"; // Extract theme from location.state
 
     // Course details state
     const [course] = useState({

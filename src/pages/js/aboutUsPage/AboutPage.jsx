@@ -8,7 +8,7 @@ import AboutHightlightSection from './AboutHightlightSection';
 
 export default function AboutPage() {
   return (
-    <>
+    <div>
       {/* <Navbar/>
       <div className="About">
         <div className="aboutImage">
@@ -28,6 +28,6 @@ export default function AboutPage() {
         <TeamSection/>
       </div>
       <Footer/>  
-    </>
+    </div>
   )
 }

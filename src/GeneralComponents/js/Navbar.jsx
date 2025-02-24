@@ -57,9 +57,9 @@ function Navbar() {
           
           {/* Navbar actions (Login and Register buttons) */}
           <div className="navbar-actions">
-            {/*<Link to="/login" className="btn btn-outline-dark me-2 mb-1">Login</Link>*/}
-            {/*<Link to="/register" className="btn btn-outline-dark me-2 mb-1">Register as Student</Link>*/}
-            {/*<Link to="/become-teacher" className="btn btn-outline-dark me-2 mb-1">Register as a Teacher</Link>*/}
+            <Link to="/login" className="btn btn-outline-dark me-2 mb-1">Login</Link>
+            <Link to="/register" className="btn btn-outline-dark me-2 mb-1">Register as Student</Link>
+            <Link to="/become-teacher" className="btn btn-outline-dark me-2 mb-1">Register as a Teacher</Link>
           </div>
         </div>
       </div>

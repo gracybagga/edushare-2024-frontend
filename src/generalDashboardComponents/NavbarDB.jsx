@@ -4,7 +4,7 @@ import scholarship from "../pages/img/scholarship.png";
 
 export default function NavbarDB({ onToggleSidebar, onToggleChatbot, theme }) {
     return (
-        <>
+        <div>
             <nav className={`navbar navbar-expand-lg navbar-${theme==="light"?'dark':'light'} bg-${theme==="light"?'dark':'light'} border-bottom`}>
                 <div className="container-fluid">
                     <button
@@ -22,6 +22,6 @@ export default function NavbarDB({ onToggleSidebar, onToggleChatbot, theme }) {
                     </button>
                 </div>
             </nav>
-        </>
+        </div>
     );
 }

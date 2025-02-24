@@ -475,7 +475,7 @@ const CourseList = () => {
   };
 
   return (
-    <>
+    <div>
       <Navbar/>
       <div style={{background:'linear-gradient(to bottom, rgba(255, 255, 255, 0.5), rgba(0, 30, 150, 0.2))', minHeight:'100vh'}}>
         <div className="container mt-4">
@@ -552,7 +552,7 @@ const CourseList = () => {
         </div>
       </div>
       <Footer/>
-    </>
+    </div>
   );
 };
 

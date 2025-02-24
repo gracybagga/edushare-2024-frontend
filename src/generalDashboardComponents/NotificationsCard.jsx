@@ -15,7 +15,7 @@ const NotificationsCard = ({ theme }) => {
   const cardTheme = theme === "dark" ? "bg-dark text-white border-light" : "bg-light text-dark border-dark";
 
   return (
-    <>
+    <div>
       {/* Notifications Card */}
       <div className={`card ${cardTheme} shadow `}>
         <div className="card-body">
@@ -39,7 +39,7 @@ const NotificationsCard = ({ theme }) => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

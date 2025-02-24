@@ -5,11 +5,11 @@ const RecentlyEnrolledCourses = ({ courses, theme }) => {
   const navigate = useNavigate();
 
   const handleCourseClick = (courseId) => {
-    navigate("/course-details", { state: { courseId } });
+    navigate("/student-course-dashboard", { state: { courseId } });
   };
 
   return (
-    <>
+    <div>
       <div
         className={`card shadow ${theme === 'dark' ? 'bg-dark text-light border-light' : 'bg-light text-dark border-dark'}`}
         style={{ height:'403px' , overflowY: "auto" }}
@@ -49,7 +49,7 @@ const RecentlyEnrolledCourses = ({ courses, theme }) => {
         </div>
       </div>
       
-    </>
+    </div>
   );
 };
 
