@@ -12,7 +12,7 @@ const RecentlyEnrolledCourses = ({ courses, theme }) => {
     <div>
       <div
         className={`card shadow ${theme === 'dark' ? 'bg-dark text-light border-light' : 'bg-light text-dark border-dark'}`}
-        style={{ height:'403px' , overflowY: "auto" }}
+        style={{ height:'412px' , overflowY: "auto" }}
       >
         <div className="card-body">
           <h3 className="card-title">My Courses</h3>
@@ -29,14 +29,14 @@ const RecentlyEnrolledCourses = ({ courses, theme }) => {
                     src={course.image}
                     alt={course.name}
                     style={{ width: "40px", height: "40px" }}
-                    className="me-3"
+                    className="ms-2 me-3"
                   />
                  <div className="flex-grow-1 d-flex flex-column">
-        <strong>{course.name}</strong>
-        <span className={`${theme === 'dark' ? 'text-secondary' : 'text-muted'}`}>{course.category}</span>
-      </div>
+                  <strong>{course.name}</strong>
+                  <span className={`${theme === 'dark' ? 'text-secondary' : 'text-muted'}`}>{course.category}</span>
+                </div>
                   <div>
-                    <button className={`btn btn-${theme==='light'?'primary':'secondary'} btn-md rounded-pill`}>
+                    <button className={`mx-2 btn btn-${theme==='light'?'primary':'secondary'} btn-md rounded-pill`}>
                       View
                     </button>
                   </div>

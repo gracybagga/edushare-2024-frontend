@@ -1,15 +1,16 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
-import ClockCardCourse from "../../generalDashboardComponents/ClockCardCourse";
-import "../css/studentCourseDashboard.css";
-import scholarship from "../img/scholarship.png";
+import ClockCardCourse from "../../../generalDashboardComponents/ClockCardCourse";
+import "../../css/studentCourseDashboard.css";
+import scholarship from "../../img/scholarship.png";
 
 const StudentCourseDashboard = () => {
+    const navigate = useNavigate();
     const location = useLocation();
-    const theme = location.state?.theme || "dark"; // Extract theme from location.state
+    const theme = location.state?.theme || "light"; // Extract theme from location.state
 
     // Course details state
     const [course] = useState({
@@ -35,11 +36,15 @@ const StudentCourseDashboard = () => {
     });
 
     const coursesFeatures = [
-        { title: "📚 Lecture Notes", desc: "Read engaging lecture notes.", btn: "View them", color: "primary", additionalInfo: "Total 5 Lecture notes" },
-        { title: "🎥 Video Lectures", desc: "Watch engaging lectures and tutorials.", btn: "Watch Now", color: "success", additionalInfo: "Total 5 videos" },
-        { title: "📝 Assignments", desc: "Complete and submit your assignments.", btn: "View Assignments", color: "danger", additionalInfo: "Total 4 Assignments" },
-        { title: "🧩 Quizzes", desc: "Test your knowledge with quizzes.", btn: "Take a Quiz", color: "warning", additionalInfo: "Total 5 Quizzes" },
+        { title: "📚 Lecture Notes", desc: "Read engaging lecture notes.", btn: "View them", color: "primary", additionalInfo: "Total 5 Lecture notes", link:'/course-lectures' },
+        { title: "🎥 Video Lectures", desc: "Watch engaging lectures and tutorials.", btn: "Watch Now", color: "success", additionalInfo: "Total 5 videos", link:'/course-videos' },
+        { title: "📝 Assignments", desc: "Complete and submit your assignments.", btn: "View Assignments", color: "danger", additionalInfo: "Total 4 Assignments", link:'/course-assignments' },
+        { title: "🧩 Quizzes", desc: "Test your knowledge with quizzes.", btn: "Take a Quiz", color: "warning", additionalInfo: "Total 5 Quizzes", link:'/course-quizzes' },
     ];
+
+    const navigateToDashboard = () => {
+        navigate(-1);
+    }
 
     return (
         <div className={`course-dashboard ${theme === "dark" ? "bg-dark text-white" : "bg-light text-dark"} min-vh-100`}>
@@ -48,7 +53,7 @@ const StudentCourseDashboard = () => {
                 <div className="container-fluid">
                     <img src={scholarship} alt='logo' style={{maxHeight: '35px'}}/>
                     <span className="navbar-brand fw-bold">EduShare</span>
-                    <button className="btn btn-outline-primary">⬅ Back to Dashboard</button>
+                    <button className="btn btn-outline-primary" onClick={navigateToDashboard}>⬅ Back to Dashboard</button>
                 </div>
             </nav>
 
@@ -75,7 +80,9 @@ const StudentCourseDashboard = () => {
                                             <h5 className="card-title fw-bold">{currItem.title}</h5>
                                             <p className="card-text">{currItem.desc}</p>
                                             {currItem.additionalInfo && <p className="text-muted">{currItem.additionalInfo}</p>}
-                                            <button className={`btn btn-${currItem.color} rounded-pill w-100`}>{currItem.btn}</button>
+                                            <Link to={currItem.link} state = { {theme : theme} }>
+                                                <button className={`btn btn-${currItem.color} rounded-pill w-100`}>{currItem.btn}</button>
+                                            </Link>
                                         </div>
                                     </motion.div>
                                 </div>

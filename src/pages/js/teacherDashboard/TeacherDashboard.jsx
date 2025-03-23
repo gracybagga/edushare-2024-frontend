@@ -37,7 +37,7 @@ export default function TeacherDashboard() {
         <div className={`min-vh-100 ${theme === "light" ? "bg-light text-dark" : "bg-dark text-light"}`}>
             <NavbarDB onToggleChatbot={toggleChatbot} theme={theme}/>
             <WelcomeBanner userName={userName} />
-            <div className="mx-4 my-4 ">
+            <div className="mx-2 my-4 ">
                 <div className="row mx-4 g-4">
                     {/* Profile Card */}
                     <div className="col-md-4">

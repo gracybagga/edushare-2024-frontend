@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const PopularCourses = ({ theme }) => {
     let userRole = localStorage.getItem("userRole") || 'STUDENT';
-    let btnText = userRole === 'TEACHER' ? 'Request Assignment' : 'Enroll now';
+    let btnText = userRole === 'TEACHER' ? 'Request' : 'Enroll';
     const courses = [
         {
             id: 1,
@@ -42,14 +42,14 @@ const PopularCourses = ({ theme }) => {
                     {courses.map((course) => (
                         <li
                             key={course.id}
-                            className={`list-group-item d-flex justify-content-between align-items-center ${theme==='dark'?'bg-dark text-light':'bg-light text-dark'}`}
+                            className={`px-1 list-group-item d-flex justify-content-between align-items-center ${theme==='dark'?'bg-dark text-light':'bg-light text-dark'}`}
                         >
                             <div className="d-flex align-items-center">
                                 {/* Course Image */}
                                 <img
                                     src={course.image}
                                     alt={course.name}
-                                    className="rounded me-3"
+                                    className="rounded me-1"
                                     style={{ width: '50px', height: '50px' }}
                                 />
                                 <div>

@@ -15,7 +15,7 @@ export default function ClockCard() {
     }, []);
     return (
         <div>
-            <div className="clock-card">
+            <div className="clock-card" style={{height:'461px'}}>
                 <div className="clock-container">
                     <p className="clock-title">Current Time</p>
                     <Clock value={value} className="styled-clock" />

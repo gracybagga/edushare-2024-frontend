@@ -24,7 +24,7 @@ const TogglerCard = ({ theme, toggleTheme }) => {
   };
 
   return (
-    <div className={`card shadow-sm text-center rounded p-3 ${theme==='light'?'shadow-lg border-dark bg-light':'shadow-lg border-light bg-dark'}`}>
+    <div className={`card shadow-sm text-center rounded p-3 ${theme==='light'?'shadow-lg border-dark bg-light':'shadow-lg border-light bg-dark'}`} style={{height:'461px'}}>
       <div className={`card-header ${theme==='dark' ? 'text-light' : 'text-dark'}`} style={{fontSize:'2rem'}}>
         Settings
       </div>

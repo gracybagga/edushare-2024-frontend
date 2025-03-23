@@ -209,9 +209,11 @@ export default function LoginPage() {
                   </button>
                 </div>
                 <div className="col-md-6">
-                  <Link to='/' className="btn btn-outline-dark w-100 mt-2">
-                    <i className="bi bi-house-fill"></i>Home
-                  </Link>
+                  <button className="btn btn-outline-dark w-100 mt-2">
+                    <Link to='/' className='text-dark'>
+                      <i className="bi bi-house-fill"></i>Home
+                    </Link>
+                  </button>
                 </div>
               </div>
             </form>
