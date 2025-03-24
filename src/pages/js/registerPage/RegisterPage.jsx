@@ -6,6 +6,7 @@ import Swal from 'sweetalert2';
 
 export default function RegisterPage() {
   const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(false);
 
   const [formData, setFormData] = useState({
     firstName: '',
@@ -93,7 +94,8 @@ export default function RegisterPage() {
       dateOfBirth: formData.dateOfBirth
     }
     try {
-      const response = await fetch(`${process.env.EDUSHARE_BACKEND_URL}/auth/register`, {
+      setIsLoading(true);
+      const response = await fetch(`${process.env.VITE_EDUSHARE_BACKEND_URL}/api/auth/register/student`, {
         method: 'POST',
         headers: { 
           "Content-Type": "application/json",
@@ -137,6 +139,8 @@ export default function RegisterPage() {
         showConfirmButton: false,
         timer: 1500
       });
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -252,7 +256,13 @@ export default function RegisterPage() {
               </div>
               <div className="row mb-1">
                 <div className="col-md-6">
-                <button type="submit" className="btn btn-outline-primary w-100 mt-2">Register</button>
+                <button type="submit" className="btn btn-outline-primary w-100 mt-2">
+                  {isLoading ? 
+                    <div className="spinner-border" role="status">
+                      <span className="visually-hidden">Registering...</span>
+                    </div>
+                    :Register}
+                  </button>
                 </div>
                 <div className="col-md-6">
                   <Link to='/' className="btn btn-outline-dark w-100 mt-2">

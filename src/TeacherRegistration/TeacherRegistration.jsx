@@ -13,6 +13,7 @@ const TeacherRegistration = () => {
   const [qualifications, setQualifications] = useState("");
   const [experience, setExperience] = useState("");
   const [errors, setErrors] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
 
   const validateForm = () => {
     const newErrors = {};
@@ -64,7 +65,8 @@ const TeacherRegistration = () => {
     };
 
     try {
-      const response = await fetch(`${process.env.EDUSHARE_BACKEND_URL}/apply/teacher`, {
+      setIsLoading(true);
+      const response = await fetch(`${process.env.VITE_EDUSHARE_BACKEND_URL}/api/auth/register/teacher`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -97,6 +99,8 @@ const TeacherRegistration = () => {
       setSubject("");
       setQualifications("");
       setExperience("");
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -256,7 +260,12 @@ const TeacherRegistration = () => {
                   </div>
                   <div className="d-grid">
                     <button type="submit" className="btn btn-primary">
-                      <i className="bi bi-check-circle-fill me-2"></i>Submit Application
+                    {isLoading ?
+                      <div className="bi bi-check-circle-fill me-2" role="status">
+                        <span className="visually-hidden">Submitting...</span>
+                      </div>              
+                      :SubmitApplication
+                      }
                     </button>
                     <Link to="/" className="btn btn-secondary mt-2">
                       <i className="bi bi-house-fill me-2"></i>Back to Home

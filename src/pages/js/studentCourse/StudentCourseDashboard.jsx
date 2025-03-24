@@ -36,10 +36,10 @@ const StudentCourseDashboard = () => {
     });
 
     const coursesFeatures = [
-        { title: "📚 Lecture Notes", desc: "Read engaging lecture notes.", btn: "View them", color: "primary", additionalInfo: "Total 5 Lecture notes", link:'/course-lectures' },
-        { title: "🎥 Video Lectures", desc: "Watch engaging lectures and tutorials.", btn: "Watch Now", color: "success", additionalInfo: "Total 5 videos", link:'/course-videos' },
-        { title: "📝 Assignments", desc: "Complete and submit your assignments.", btn: "View Assignments", color: "danger", additionalInfo: "Total 4 Assignments", link:'/course-assignments' },
-        { title: "🧩 Quizzes", desc: "Test your knowledge with quizzes.", btn: "Take a Quiz", color: "warning", additionalInfo: "Total 5 Quizzes", link:'/course-quizzes' },
+        { title: "📚 Lecture Notes", desc: "Read engaging lecture notes.", btn: "View them", color: "primary", additionalInfo: "Total 5 Lecture notes", link:'/student-course-lectures' },
+        { title: "🎥 Video Lectures", desc: "Watch engaging lectures and tutorials.", btn: "Watch Now", color: "success", additionalInfo: "Total 5 videos", link:'/student-course-videos' },
+        { title: "📝 Assignments", desc: "Complete and submit your assignments.", btn: "View Assignments", color: "danger", additionalInfo: "Total 4 Assignments", link:'/student-course-assignments' },
+        { title: "🧩 Quizzes", desc: "Test your knowledge with quizzes.", btn: "Take a Quiz", color: "warning", additionalInfo: "Total 5 Quizzes", link:'/student-course-quizzes' },
     ];
 
     const navigateToDashboard = () => {
