@@ -1,18 +1,7 @@
-// Previous team used react router for multipage navigation
 import React from "react";
-// import { useEffect } from "react";
-// import { BrowserRouter as Router, Routes, Route, useLocation, } from "react-router-dom";
 import { BrowserRouter as Router, Routes, Route, } from "react-router-dom";
 import "./App.css"; // not being used in 2024. Will be removing the import statement later
 
-// Previous team components
-// import KnowledgeBank from "./previousTeamWork/KnowledgeBankPage/js/kb";
-// import AccountSetup from "./previousTeamWork/AccountSetup/js/AccountSetup";
-// import Dashboard from "./previousTeamWork/Dashboard/js/Dashboard";
-// import StudentProfile from "./previousTeamWork/viewUserProfile/js/studentProfile";
-// import TeacherProfile from "./previousTeamWork/viewUserProfile/js/teacherProfile";
-// import StudentSetupForm from "./previousTeamWork/AccountSetup/js/studentSetup";
-// import axios from "axios";
 
 // 2024 components
 import HomePage from "./pages/js/homePage/HomePage";
@@ -25,20 +14,23 @@ import LoginPage from "./pages/js/loginPage/LoginPage";
 import TeacherRegistration from "./TeacherRegistration/TeacherRegistration";
 import StudentDashboard from "./pages/js/studentDashboard/StudentDashboard"
 import TeacherDashboard from "./pages/js/teacherDashboard/TeacherDashboard";
+import AllQuiz from "./pages/js/quizPage/AllQuiz";
+import AllLecture from "./pages/js/lecturePage/AllLecture";
+import AllVideoLectures from "./pages/js/VideoLecturePage/AllVideoLectures";
 import StudentCourseDashboard from "./pages/js/studentCourse/StudentCourseDashboard";
-import StudentQuiz from "./pages/js/quizPage/StudentQuiz";
-import StudentLecture from "./pages/js/lecturePage/StudentLecture";
 import StudentAssignment from "./pages/js/AssignmentsPage/StudentAssignment";
-import StudentVideoLectures from "./pages/js/VideoLecturePage/StudentVideoLecture";
+import TeacherCourseDashboard from "./pages/js/teacherCourse/TeacherCourseDashboard";
+import TeacherAssignment from "./pages/js/AssignmentsPage/TeacherAssignment";
+import NewLecture from "./pages/js/lecturePage/NewLecture";
+import NewVideoLectures from "./pages/js/VideoLecturePage/NewVideoLectures";
+import NewQuiz from "./pages/js/quizPage/NewQuiz";
+import StudentCourseEnrollment from "./pages/js/studentCourseEnrollment/StudentCourseEnrollment";
 
 // This component is responsible for rendering the Navbar and Footer conditionally, as well as the routes
 function MainApp() {
-  // let location = useLocation();
   return (
     <div>
       <Routes>
-        {/*Everyone*/}
-        {/* Created in 2024 */}
         <Route path="/" element={<HomePage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/mission" element={<Mission />} />
@@ -50,24 +42,22 @@ function MainApp() {
         <Route path = "/student-dashboard" element = {<StudentDashboard/>}/>
         <Route path = "/teacher-dashboard" element = {<TeacherDashboard/>}/>
         <Route path = "/student-course-dashboard" element = {<StudentCourseDashboard/>}/>
-        <Route path = "/student-course-quizzes" element = {<StudentQuiz/>}/>
-        <Route path = "/student-course-lectures" element = {<StudentLecture/>}/>
+        <Route path = "/student-course-lectures" element = {<AllLecture/>}/>
+        <Route path = "/student-course-videos" element = {<AllVideoLectures/>}/>
         <Route path = "/student-course-assignments" element = {<StudentAssignment/>}/>
-        <Route path = "/student-course-videos" element = {<StudentVideoLectures/>}/>
+        <Route path = "/student-course-quizzes" element = {<AllQuiz/>}/>
+        <Route path = "/teacher-course-dashboard" element = {<TeacherCourseDashboard/>}/>
+        <Route path = "/teacher-course-lectures" element = {<AllLecture/>}/>
+        <Route path = "/teacher-course-videos" element = {<AllVideoLectures/>}/>
+        <Route path = "/teacher-course-assignments" element = {<TeacherAssignment/>}/>
+        <Route path = "/teacher-course-quizzes" element = {<AllQuiz/>}/>
+        <Route path = "/teacher-course-lectures-new" element = {<NewLecture/>}/>
+        <Route path = "/teacher-course-videos-new" element = {<NewVideoLectures/>}/>
+        <Route path = "/teacher-course-quizzes-new" element = {<NewQuiz/>}/>
+        <Route path = "/student-course-enrollment" element = {<StudentCourseEnrollment/>}/>
 
-        {/*only user*/}
-        {/* Created by previous team */}
-        {/* <Route path="/kb" element={<KnowledgeBank />} />
-        <Route path="/accountSetup" element={<AccountSetup />} />
-        <Route path="/studentSetup" element={<StudentSetupForm />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/studentProfile" element={<StudentProfile />} />
-        <Route path="/studentProfile/:username" element={<StudentProfile />}/>
-        <Route path="/teacherProfile" element={<TeacherProfile />} />
-        <Route path="/teacherProfile/:username" element={<TeacherProfile />}/> */}
       </Routes>
     </div>
-  // commented code 1
   );
 }
 
@@ -79,48 +69,7 @@ function App() {
         <MainApp />
       </Router>
     </div>
-    // commented code 2
   );
 }
 
 export default App;
-
-// commented code 1
-  //   <div className={`App ${location.pathname === "/register" ? "register-page" : ""}`}>
-  //   {/* {location.pathname === "/" && <Navbar/>} */}
-  //   <main className="main-content">
-  //     <Routes>
-  //       {/*Everyone*/}
-  //       <Route path="/" element={<HomePage />} />
-  //       <Route path="/about" element={<AboutPage />} />
-  //       <Route path="/mission" element={<Mission />} />
-  //       <Route path="/joinus" element={<JoinUs />} />
-  //       <Route path="/courselist" element={<CourseList/>} />
-  //       <Route path="/register" element={<RegisterPage />} />
-  //       <Route path="/login" element={<LoginPage />} />
-
-  //       {/* Dynamic course details page */}
-  //       {/* Not setup yet */}
-  //       {/* <Route path="/course/:id" element={<CourseDetail />} /> */}
-
-
-  //       {/*only user*/}
-  //       <Route path="/kb" element={<KnowledgeBank />} />
-  //       <Route path="/accountSetup" element={<AccountSetup />} />
-  //       <Route path="/studentSetup" element={<StudentSetupForm />} />
-  //       <Route path="/dashboard" element={<Dashboard />} />
-  //       <Route path="/studentProfile" element={<StudentProfile />} />
-  //       <Route path="/studentProfile/:username" element={<StudentProfile />}/>
-  //       <Route path="/teacherProfile" element={<TeacherProfile />} />
-  //       <Route path="/teacherProfile/:username" element={<TeacherProfile />}/>
-  //     </Routes>
-  //   </main>
-  //   {/* {!["/register", "/login", "/accountSetup"].includes(location.pathname) && <Footer />} */}
-  // </div>
-
-    // commented code 2
-    //   <div className="App">
-    //   <Router>
-    //     <MainApp />
-    //   </Router>
-    // </div>

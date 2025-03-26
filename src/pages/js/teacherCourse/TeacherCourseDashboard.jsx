@@ -4,10 +4,11 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import ClockCardCourse from "../../../generalDashboardComponents/ClockCardCourse";
-import "../../css/studentCourseDashboard.css";
+import "../../css/teacherCourseDashboard.css";
 import scholarship from "../../img/scholarship.png";
+import Swal from "sweetalert2";
 
-const StudentCourseDashboard = () => {
+const TeacherCourseDashboard = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const theme = location.state?.theme || "light"; // Extract theme from location.state
@@ -72,8 +73,11 @@ const StudentCourseDashboard = () => {
                                         <h5 className="card-title fw-bold">📚 Lecture Notes</h5>
                                         <p className="card-text">Read engaging lecture notes.</p>
                                         <p className="text-muted">Total 5 Lecture notes</p>
-                                        <Link to='/student-course-lectures' state = { {theme : theme} }>
-                                            <button className={`btn btn-primary rounded-pill w-100`}>View them</button>
+                                        <Link to='/teacher-course-lectures' state = { {theme : theme} }>
+                                            <button className={`btn btn-primary rounded-pill w-100 mb-1`}>View them</button>
+                                        </Link>
+                                        <Link to='/teacher-course-lectures-new' state = { {theme : theme} }>
+                                            <button className={`btn btn-${theme==='light'?'secondary':'light'} rounded-pill w-100 mb-1`}>Create new</button>
                                         </Link>
                                     </div>
                                 </motion.div>
@@ -85,7 +89,10 @@ const StudentCourseDashboard = () => {
                                         <p className="card-text">Watch engaging lectures and tutorials.</p>
                                         <p className="text-muted">Total 5 videos</p>
                                         <Link to='/student-course-videos' state = { {theme : theme} }>
-                                            <button className={`btn btn-success rounded-pill w-100`}>Watch Now</button>
+                                            <button className={`btn btn-success rounded-pill w-100 mb-1`}>Watch Now</button>
+                                        </Link>
+                                        <Link to='/teacher-course-videos-new' state = { {theme : theme} }>
+                                            <button className={`btn btn-${theme==='light'?'secondary':'light'} rounded-pill w-100 mb-1`}>Create new</button>
                                         </Link>
                                     </div>
                                 </motion.div>
@@ -97,8 +104,27 @@ const StudentCourseDashboard = () => {
                                         <p className="card-text">Complete and submit your assignments.</p>
                                         <p className="text-muted">Total 4 Assignments</p>
                                         <Link to='/student-course-assignments' state = { {theme : theme} }>
-                                            <button className={`btn btn-danger rounded-pill w-100`}>View Assignments</button>
+                                            <button className={`btn btn-danger rounded-pill w-100 mb-1`}>View Assignments</button>
                                         </Link>
+                                        <button
+                                            className={`btn btn-${theme === "light" ? "secondary" : "light"} rounded-pill w-100 mb-1`}
+                                            onClick={() => {
+                                                Swal.fire({
+                                                title: "🚀 Future Feature!",
+                                                text: "This feature is coming soon. Stay tuned!",
+                                                icon: "info",
+                                                confirmButtonText: "Got it!",
+                                                background: theme === "dark" ? "#222" : "#fff",
+                                                color: theme === "dark" ? "#fff" : "#000",
+                                                confirmButtonColor: theme === "dark" ? "#007bff" : "#0d6efd",
+                                                });
+                                            }}
+                                        >
+                                            Create new
+                                        </button>
+                                        {/* <Link to='/teacher-course-assignments-new' state = { {theme : theme} }>
+                                            <button className={`btn btn-${theme==='light'?'secondary':'light'} rounded-pill w-100 mb-1`}>Create new</button>
+                                        </Link> */}
                                     </div>
                                 </motion.div>
                             </div>
@@ -109,7 +135,10 @@ const StudentCourseDashboard = () => {
                                         <p className="card-text">Test your knowledge with quizzes.</p>
                                         <p className="text-muted">Total 5 Quizzes</p>
                                         <Link to='/student-course-quizzes' state = { {theme : theme} }>
-                                            <button className={`btn btn-warning rounded-pill w-100`}>Take a Quiz</button>
+                                            <button className={`btn btn-warning rounded-pill w-100 mb-1`}>Take a Quiz</button>
+                                        </Link>
+                                        <Link to='/teacher-course-quizzes-new' state = { {theme : theme} }>
+                                            <button className={`btn btn-${theme==='light'?'secondary':'light'} rounded-pill w-100 mb-1`}>Create new</button>
                                         </Link>
                                     </div>
                                 </motion.div>
@@ -160,13 +189,13 @@ const StudentCourseDashboard = () => {
                                             className={`btn btn-info w-100 rounded-pill p-2`}
                                             onClick={() => {
                                                 Swal.fire({
-                                                    title: "🚀 Future Feature!",
-                                                    text: "This feature is coming soon. Stay tuned!",
-                                                    icon: "info",
-                                                    confirmButtonText: "Got it!",
-                                                    background: theme === "dark" ? "#222" : "#fff",
-                                                    color: theme === "dark" ? "#fff" : "#000",
-                                                    confirmButtonColor: theme === "dark" ? "#007bff" : "#0d6efd",
+                                                title: "🚀 Future Feature!",
+                                                text: "This feature is coming soon. Stay tuned!",
+                                                icon: "info",
+                                                confirmButtonText: "Got it!",
+                                                background: theme === "dark" ? "#222" : "#fff",
+                                                color: theme === "dark" ? "#fff" : "#000",
+                                                confirmButtonColor: theme === "dark" ? "#007bff" : "#0d6efd",
                                                 });
                                             }}
                                         >
@@ -204,4 +233,4 @@ const StudentCourseDashboard = () => {
     );
 };
 
-export default StudentCourseDashboard;
+export default TeacherCourseDashboard;

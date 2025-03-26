@@ -4,32 +4,15 @@ import { Link } from "react-router-dom";
 const PopularCourses = ({ theme }) => {
     let userRole = localStorage.getItem("userRole") || 'STUDENT';
     let btnText = userRole === 'TEACHER' ? 'Request' : 'Enroll';
+    let btnLink = userRole === 'TEACHER' ? '/teacher-course-enrollment' : '/student-course-enrollment';
     const courses = [
-        {
-            id: 1,
-            name: 'React for Beginners',
-            image: 'https://media2.dev.to/dynamic/image/width=1080,height=1080,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F096baapsqqt9fks0us99.png',
-        },
-        {
-            id: 2,
-            name: 'Advanced JavaScript',
-            image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/JavaScript-logo.png/640px-JavaScript-logo.png',
-        },
-        {
-            id: 3,
-            name: 'Mastering TypeScript',
-            image: 'https://miro.medium.com/v2/resize:fit:1358/1*moJeTvW97yShLB7URRj5Kg.png',
-        },
-        {
-            id: 4,
-            name: 'Learning C#',
-            image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRT6mDvl9odi-fcxjY7S1HItDwaizVfRbatVQ&s',
-        },
-        {
-            id: 5,
-            name: 'Data Structures and Algorithms',
-            image: 'https://media.licdn.com/dms/image/v2/D4D12AQF_Wj1fEsaRsA/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1690875038253?e=2147483647&v=beta&t=u-5WytaSkz9aVIf1yo4F6nkMEdT0q7QOKpjTVY1nMGE',
-        },
+        { id: 1, name: "Mathematics Essentials", image: "https://cdn.vectorstock.com/i/1000v/02/48/mathematics-school-subject-icon-education-vector-32720248.jpg" },
+        { id: 2, name: "Introduction to Science", image: "https://img.freepik.com/free-vector/hand-drawn-science-education-background_23-2148497851.jpg?semt=ais_hybrid" },
+        { id: 3, name: "Creative Writing", image: "https://media.istockphoto.com/id/1141968788/vector/concept-of-literary-art-with-letters-coming-out-of-a-pencil.jpg?s=612x612&w=0&k=20&c=30p9CxNFBNH-A7Xt-or1Nbz9RVfaqrLnRJFza9k16V4=" },
+        { id: 4, name: "World History", image: "https://img.freepik.com/premium-vector/history-vector-round-colorful-linear-illustration_104589-1398.jpg" },
+        { id: 5, name: "Basic Computer Skills", image: "https://thumbs.dreamstime.com/b/concept-thinking-background-brain-cpu-mind-series-technology-symbols-subject-computer-science-artificial-concept-117062986.jpg" },
+        { id: 6, name: "Art & Creativity", image: "https://t4.ftcdn.net/jpg/02/90/76/83/360_F_290768326_SN1iziM2epjEjSGLDuKHAe7k5Mb37rWP.jpg" },
+        { id: 7, name: "Physical Education", image: "https://media.istockphoto.com/id/2075354173/photo/fitness-couple-is-doing-kettlebell-twist-in-a-gym-togehter.jpg?s=612x612&w=0&k=20&c=lfs1V1d0YB33tn72myi6FElJnylPJYYM9lW5ZhlnYqY=" },
     ];
 
     const cardTheme = theme === 'dark' ? 'bg-dark text-white border-light' : 'bg-light text-dark border-dark';
@@ -58,7 +41,7 @@ const PopularCourses = ({ theme }) => {
                                 </div>
                             </div>
                             {/* Enroll Now Button */}
-                            <Link to='/student-enrollment' >
+                            <Link to={btnLink} state={{theme:theme}} >
                                 <button className={`p-2 btn btn-${theme==='light'?'primary':'secondary'} btn-sm rounded-pill`}>{btnText}</button>
                             </Link>
                         </li>
