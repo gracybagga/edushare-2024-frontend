@@ -300,11 +300,11 @@ import Swal from "sweetalert2";
                           onChange={(e) => setExperience(e.target.value)}
                         >
                           <option value="">Select experience</option>
-                          <option value="0-1">0-1 years</option>
-                          <option value="2-3">2-3 years</option>
-                          <option value="4-5">4-5 years</option>
-                          <option value="6-10">6-10 years</option>
-                          <option value="10+">10+ years</option>
+                          <option value="0-1 years">0-1 years</option>
+                          <option value="2-3 years">2-3 years</option>
+                          <option value="4-5 years">4-5 years</option>
+                          <option value="6-10 years">6-10 years</option>
+                          <option value="10+ years">10+ years</option>
 
                         </select>
                         {errors.experience && <div style={{color:'red', fontSize:'small'}}>{errors.experience}</div>}
