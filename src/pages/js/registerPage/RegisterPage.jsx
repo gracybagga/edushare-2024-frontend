@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import { Link } from "react-router-dom"; // Import Link from react-router-dom to handle navigation between pages
 import Swal from 'sweetalert2';
+import Edushare from "../../img/Edushare.jpg"
 
 export default function RegisterPage() {
   const navigate = useNavigate();
@@ -82,7 +83,7 @@ export default function RegisterPage() {
     const payload = {
       firstName: formData.firstName.trim(),
       lastName: formData.lastName.trim(),
-      email: formData.email.trim(),
+      email: formData.email.toLowerCase().trim(),
       phone: formData.phone.trim(),
       street: formData.street.trim(),
       province: formData.province.trim(),
@@ -127,6 +128,7 @@ export default function RegisterPage() {
         icon: "success",
         title: result.message,
         text: "Your user id is: "+result.userId,
+        showConfirmButton: true
       });
 
     } catch (error) {
@@ -150,19 +152,19 @@ export default function RegisterPage() {
   // };
 
   const bgStylesLogin = {
-    backgroundImage: 'url(https://img.freepik.com/free-photo/3d-render-graduation-cap-books-diploma_107791-15907.jpg?t=st=1737175337~exp=1737178937~hmac=a9a77db79e22fbbd5c888cac9667e3e26381aecd108e7c934004d166081aa540&w=1380)',
+    backgroundImage: `url(${Edushare})`,
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',
     backgroundPosition: 'center'
   };
   return (
     <div className="container-fluid p-5 d-flex align-items-center justify-content-center" style={bgStylesLogin}>
-      <div className="row w-75" style={{background:'rgba(180,180,180,0.2)', boxShadow:'0 10px 16px rgba(0,0,0,0.8)', border:'2px solid black', borderRadius:'10px'}}>
+      <div className="row w-75" style={{background:'rgba(180,180,180,0.9)', boxShadow:'0 10px 16px rgba(0,0,0,0.8)', border:'2px solid black', borderRadius:'10px'}}>
         {/* left col */}
         <div className="col-md-6 p-3 bg-transparent border-end d-flex flex-column justify-content-center align-items-center">
           <div className="text-center mb-2">
-            <h4 className="mb-3">Have an account? Login!</h4>
-            <button type="button" className="btn btn-outline-primary w-75 mb-3" onClick={handleLoginRedirect}>
+            <h4 className=" fw-bold fs-2 mb-3">Have an account? Login!</h4>
+            <button type="button" className="btn btn-primary rounded-pill w-75 mb-3" onClick={handleLoginRedirect}>
             <i className="bi bi-box-arrow-in-left"></i> Go to Login
             </button>
           </div>
@@ -170,31 +172,31 @@ export default function RegisterPage() {
 
         {/* right col */}
         <div className="col-md-6 p-3 bg-transparent">
-          <div className="card-header"><h3 className="text-left font-weight-light my-1">Student Registeration</h3></div>
+          <div className="card-header"><h3 className="text-left  fw-bold fs-3 my-1">Student Registeration</h3></div>
           <div className="card-body">
             <form onSubmit={handleRegisteration}>
               <div className="mb-2">
-                <label htmlFor="firstName" className="form-label mb-2">First name:</label>
+                <label htmlFor="firstName" className="form-label fw-bold fs-4 mb-2">First name:</label>
                 <input type="text" className={`form-control`} id="firstName" value={formData.firstName} onChange={handleInputChange} placeholder="John" />
                 <div className="invalid-feedback">{errors.firstName}</div>
               </div>
               <div className="mb-2">
-              <label htmlFor="lastName" className="form-label mb-2">Last name:</label>
+              <label htmlFor="lastName" className="form-label fw-bold fs-4 mb-2">Last name:</label>
                 <input type="text" className={`form-control`} id="lastName" value={formData.lastName} onChange={handleInputChange} placeholder="Smith" />
                 <div className="invalid-feedback">{errors.lastName}</div>
               </div>
               <div className="mb-2">
-              <label htmlFor="email" className="form-label mb-1">Email address</label>
+              <label htmlFor="email" className="form-label fw-bold fs-4 mb-1">Email address</label>
                 <input type="email" className={`form-control`} id="email" value={formData.email} onChange={handleInputChange} placeholder="abc@email.com" />
                 <div className="invalid-feedback">{errors.email}</div>
               </div>
               <div className="mb-2">
-              <label htmlFor="phone" className="form-label mb-2">Phone Number:</label>
+              <label htmlFor="phone" className="form-label fw-bold fs-4 mb-2">Phone Number:</label>
                 <input type="text" className={`form-control`} id="phone" value={formData.phone} onChange={handleInputChange} placeholder="3063061234" />
                 <div className="invalid-feedback">{errors.phone}</div>
               </div>
               <div className="mb-2">
-                <label htmlFor="gender" className="form-label mb-2">Gender:</label>
+                <label htmlFor="gender" className="form-label fw-bold fs-4 mb-2">Gender:</label>
                 <select className={`form-control`} id="gender" value={formData.gender} onChange={handleInputChange}>
                   <option value="">Select Gender:</option>
                   <option value="Male">Male</option>
@@ -204,17 +206,17 @@ export default function RegisterPage() {
                 <div className="invalid-feedback">{errors.gender}</div>
               </div>
               <div className="mb-2">
-                <label htmlFor="dateOfBirth" className="form-label mb-2">Date of Birth:</label>
+                <label htmlFor="dateOfBirth" className="form-label fw-bold fs-4 mb-2">Date of Birth:</label>
                 <input type="date" className={`form-control`} id="dateOfBirth" value={formData.dateOfBirth} onChange={handleInputChange} max={new Date().toISOString().split('T')[0]} />
                 <div className="invalid-feedback">{errors.dateOfBirth}</div>
               </div>
               <div className="mb-2">
-              <label htmlFor="street" className="form-label mb-2">Street:</label>
+              <label htmlFor="street" className="form-label fw-bold fs-4 mb-2">Street:</label>
                 <input type="text" className={`form-control`} id="street" value={formData.address} onChange={handleInputChange} placeholder="123 Main St" />
                 <div className="invalid-feedback">{errors.address}</div>
               </div>
               <div className="mb-2">
-              <label htmlFor="province" className="form-label">Province</label>
+              <label htmlFor="province" className="form-label fw-bold fs-4 mb-2">Province</label>
               <select className={`form-control`} id="province" value={formData.province} onChange={handleInputChange}>
                   <option value="">Select Province:</option>
                   <option value="AB">Alberta</option>
@@ -234,38 +236,38 @@ export default function RegisterPage() {
                 <div className="invalid-feedback">{errors.province}</div>
               </div>
               <div className="mb-2">
-                <label htmlFor="country" className="form-label mb-2">Country:</label>
+                <label htmlFor="country" className="form-label fw-bold fs-4 mb-2">Country:</label>
                 <input type="text" className="form-control" id="country" placeholder='Canada' readOnly/>
               </div>
               <div className="mb-2">
-              <label htmlFor="zip" className="form-label mb-2">Zip Code:</label>
+              <label htmlFor="zip" className="form-label fw-bold fs-4 mb-2">Zip Code:</label>
                 <input type="text" className={`form-control`} id="zip" value={formData.zip} onChange={handleInputChange} placeholder="A1A 1A1" />
                 <div className="invalid-feedback">{errors.zip}</div>
               </div>
               <div className="row mb-2">
                 <div className="col-md-6">
-                <label htmlFor="password" className="form-label">Password</label>
+                <label htmlFor="password" className="form-label fw-bold fs-4">Password</label>
                   <input type="password" className={`form-control`} id="password" value={formData.password} onChange={handleInputChange} />
                   <div className="invalid-feedback">{errors.password}</div>
                 </div>
                 <div className="col-md-6">
-                <label htmlFor="confirmPassword" className="form-label">Confirm Password</label>
+                <label htmlFor="confirmPassword" className="form-label fw-bold fs-4">Confirm Password</label>
                   <input type="password" className={`form-control`} id="confirmPassword" value={formData.confirmPassword} onChange={handleInputChange} />
                   <div className="invalid-feedback">{errors.confirmPassword}</div>
                 </div>
               </div>
               <div className="row mb-1">
-                <div className="col-md-6">
-                <button type="submit" className="btn btn-outline-primary w-100 mt-2">
+                <div className="col-md-12">
+                <button type="submit" className="btn btn-primary rounded-pill w-100 mt-2">
                   {isLoading ? 
                     <div className="spinner-border" role="status">
                       <span className="visually-hidden">Registering...</span>
                     </div>
-                    :Register}
+                    :<span>Register</span>}
                   </button>
                 </div>
-                <div className="col-md-6">
-                  <Link to='/' className="btn btn-outline-dark w-100 mt-2">
+                <div className="col-md-12">
+                  <Link to='/' className="btn btn-dark rounded-pill w-100 mt-2 pt-2 pb-2">
                     <i className="bi bi-house-fill"></i>Home
                   </Link>
                 </div>

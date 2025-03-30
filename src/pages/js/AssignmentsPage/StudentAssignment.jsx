@@ -72,6 +72,13 @@ const StudentAssignment = () => {
         <button class="btn btn-warning" onclick="alert('Hello, JavaScript!')">Click Me</button>
       `,
     },
+    {
+      id: 4,
+      title: "Assignment 1: Testing Backend",
+      content: `
+        <div class=\\"container\\"><h3>Core Arithmetic Concepts</h3><p>This assignment reinforces your understanding of addition, subtraction, multiplication, and division, and their application in everyday scenarios.</p><section><h4>Part 1: Real-World Problem Solving</h4><p>Solve the following word problems:</p><ol><li>A family's monthly budget is $4500.  If they spend $1800 on rent, $800 on groceries, and $500 on utilities, how much money do they have left for other expenses?</li><li>If a train travels at a speed of 60 miles per hour, how far will it travel in 3.5 hours?</li><li>A store offers a 20% discount on a $150 jacket. What is the sale price of the jacket?</li></ol></section><section><h4>Part 2: Number Sequences and Patterns</h4><p>Identify the pattern and find the next three numbers in each sequence:</p><ol><li>2, 5, 8, 11, __, __, __</li><li>3, 6, 12, 24, __, __, __</li><li>100, 90, 80, 70, __, __, __</li></ol></section><section><h4>Part 3: Mental Math</h4><p>Calculate the following using mental math strategies:</p><ol><li>15 x 4</li><li>250 + 350</li><li>1200 / 40</li></ol></section><section><h4>Part 4: Place Value</h4><p>Explain the importance of place value in performing arithmetic operations. Provide an example to illustrate your point.</p></section><section><h4>Submission</h4><p>Submit your answers and explanations in a clearly organized document.  Show your work for all calculations.</p></section></div>
+      `,
+    }
   ];
 
   const [selectedAssignment, setSelectedAssignment] = useState(assignments[0]);

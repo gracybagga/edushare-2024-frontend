@@ -9,6 +9,7 @@ import ClockCard from "../../../generalDashboardComponents/ClockCard";
 import TogglerCard from "../../../generalDashboardComponents/TogglerCard";
 import RecentlyEnrolledCourses from "../../../generalDashboardComponents/RecentlyEnrolledCourses";
 import PopularCourses from "../../../generalDashboardComponents/PopularCourses";
+import LoadingAndErrorComponent from "../../../GeneralComponents/js/LoadingAndErrorComponent";
 
 export default function StudentDashboard() {
     const [isChatbotVisible, setIsChatbotVisible] = useState(false);

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
+import Edushare from "../../img/Edushare.jpg"
 
   const TeacherRegistration = () => {
   const [firstName, setFirstName] = useState("");
@@ -83,12 +84,14 @@ import Swal from "sweetalert2";
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          "X-Requested-With": "XMLHttpRequest",
+          "Accept": "application/json",
         },
         body: JSON.stringify(formData),
       });
 
       if (!response.ok) {
-        throw new Error("Network response was not ok");
+        throw new Error("Teacher Registration failed!");
       }
 
       Swal.fire("Success", "Your application has been submitted successfully!", "success");
@@ -126,7 +129,7 @@ import Swal from "sweetalert2";
   };
 
   const bgStylesLogin = {
-    backgroundImage: 'url(https://img.freepik.com/free-photo/3d-render-graduation-cap-books-diploma_107791-15907.jpg?t=st=1737175337~exp=1737178937~hmac=a9a77db79e22fbbd5c888cac9667e3e26381aecd108e7c934004d166081aa540&w=1380)',
+    backgroundImage: `url(${Edushare})`,
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',
     backgroundPosition: 'center'
@@ -136,7 +139,7 @@ import Swal from "sweetalert2";
       <div className="container py-3 bg-transparent" style={{background:'rgba(180,180,180,0.2)'}}>
         <div className="row justify-content-center ">
           <div className="col-md-12">
-            <div className="card shadow-lg "  style={{background:'rgba(180,180,180,0.2)', boxShadow:'0 10px 16px rgba(0,0,0,0.8)', border:'2px solid black', borderRadius:'10px'}}>
+            <div className="card shadow-lg "  style={{background:'rgba(180,180,180,0.9)', boxShadow:'0 10px 16px rgba(0,0,0,0.8)', border:'2px solid black', borderRadius:'10px'}}>
               <div className="card-header bg-dark text-white text-center">
                 <h3>
                   <i className="bi bi-person-plus-fill me-2"></i>Teacher Registration
@@ -147,7 +150,7 @@ import Swal from "sweetalert2";
                   <div className="row">
                     <div className="col-md-6">
                       <div className="mb-3">
-                        <label htmlFor="firstName" className="form-label">
+                        <label htmlFor="firstName" className="form-label fw-bold fs-4">
                           <i className="bi bi-person-fill me-2"></i>First Name
                         </label>
                         <input
@@ -161,7 +164,7 @@ import Swal from "sweetalert2";
                         {errors.firstName && <div style={{color:'red', fontSize:'small'}}>{errors.firstName}</div>}
                       </div>
                       <div className="mb-3">
-                        <label htmlFor="lastName" className="form-label">
+                        <label htmlFor="lastName" className="form-label fw-bold fs-4">
                           <i className="bi bi-person-fill me-2"></i>Last Name
                         </label>
                         <input
@@ -175,7 +178,7 @@ import Swal from "sweetalert2";
                         {errors.lastName && <div style={{color:'red', fontSize:'small'}}>{errors.lastName}</div>}
                       </div>
                       <div className="mb-3">
-                        <label htmlFor="street" className="form-label">
+                        <label htmlFor="street" className="form-label fw-bold fs-4">
                           <i className="bi bi-person-fill me-2"></i>Street
                         </label>
                         <input
@@ -189,7 +192,7 @@ import Swal from "sweetalert2";
                         {errors.street && <div style={{color:'red', fontSize:'small'}}>{errors.street}</div>}
                       </div>
                       <div className="mb-3">
-                        <label htmlFor="province" className="form-label">
+                        <label htmlFor="province" className="form-label fw-bold fs-4">
                           <i className="bi bi-person-fill me-2"></i>Province
                         </label>
                         <input
@@ -203,7 +206,7 @@ import Swal from "sweetalert2";
                         {errors.province && <div style={{color:'red', fontSize:'small'}}>{errors.province}</div>}
                       </div>
                       <div className="mb-3">
-                        <label htmlFor="country" className="form-label">
+                        <label htmlFor="country" className="form-label fw-bold fs-4">
                           <i className="bi bi-person-fill me-2"></i>Country
                         </label>
                         <input
@@ -217,7 +220,7 @@ import Swal from "sweetalert2";
                         {errors.country && <div style={{color:'red', fontSize:'small'}}>{errors.country}</div>}
                       </div>
                       <div className="mb-3">
-                        <label htmlFor="zip" className="form-label">
+                        <label htmlFor="zip" className="form-label fw-bold fs-4">
                           <i className="bi bi-person-fill me-2"></i>ZIP
                         </label>
                         <input
@@ -234,7 +237,7 @@ import Swal from "sweetalert2";
                     </div>
                     <div className="col-md-6">
                       <div className="mb-3">
-                        <label htmlFor="email" className="form-label">
+                        <label htmlFor="email" className="form-label fw-bold fs-4">
                           <i className="bi bi-envelope-fill me-2"></i>Email Address
                         </label>
                         <input
@@ -248,7 +251,7 @@ import Swal from "sweetalert2";
                         {errors.email && <div style={{color:'red', fontSize:'small'}}>{errors.email}</div>}
                       </div>
                       <div className="mb-3">
-                        <label htmlFor="phone" className="form-label">
+                        <label htmlFor="phone" className="form-label fw-bold fs-4">
                           <i className="bi bi-phone-fill me-2"></i>Phone Number
                         </label>
                         <input
@@ -262,7 +265,7 @@ import Swal from "sweetalert2";
                         {errors.phone && <div style={{color:'red', fontSize:'small'}}>{errors.phone}</div>}
                       </div>
                       <div className="mb-3">
-                        <label htmlFor="subject" className="form-label">
+                        <label htmlFor="subject" className="form-label fw-bold fs-4">
                           <i className="bi bi-book-fill me-2"></i>Subject Specialization
                         </label>
                         <input
@@ -276,7 +279,7 @@ import Swal from "sweetalert2";
                         {errors.subject && <div style={{color:'red', fontSize:'small'}}>{errors.subject}</div>}
                       </div>
                       <div className="mb-3">
-                        <label htmlFor="qualifications" className="form-label">
+                        <label htmlFor="qualifications" className="form-label fw-bold fs-4">
                           <i className="bi bi-journal-bookmark-fill me-2"></i>Educational Qualifications
                         </label>
                         <input
@@ -290,7 +293,7 @@ import Swal from "sweetalert2";
                         {errors.qualifications && <div style={{color:'red', fontSize:'small'}}>{errors.qualifications}</div>}
                       </div>
                       <div className="mb-3">
-                        <label htmlFor="experience" className="form-label">
+                        <label htmlFor="experience" className="form-label fw-bold fs-4">
                           <i className="bi bi-briefcase-fill me-2"></i>Years of Job Experience
                         </label>
                         <select
@@ -313,7 +316,7 @@ import Swal from "sweetalert2";
                       <div className="row">
                         <div className="col-md-6">
                           <div className="mb-3">
-                            <label htmlFor="password" className="form-label">
+                            <label htmlFor="password" className="form-label fw-bold fs-4">
                               <i className="bi bi-lock-fill me-2"></i>Desired Password
                             </label>
                             <input
@@ -329,8 +332,8 @@ import Swal from "sweetalert2";
                         </div>
                         <div className="col-md-6">
                           <div className="mb-3">
-                            <label htmlFor="confirmPassword" className="form-label">
-                              <i className="bi bi-lock-fill me-2"></i>Confirm desired Password
+                            <label htmlFor="confirmPassword" className="form-label fw-bold fs-4">
+                              <i className="bi bi-lock-fill me-2"></i>Confirm Password
                             </label>
                             <input
                               type="password"

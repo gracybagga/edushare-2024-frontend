@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import { Link } from "react-router-dom"; // Import Link from react-router-dom to handle navigation between pages
 import Swal from 'sweetalert2';
+import Edushare from "../../img/Edushare.jpg";
 
 export default function LoginPage() {
   const [username, setUsername] = useState("");
@@ -11,9 +12,19 @@ export default function LoginPage() {
   const [PasswordError, setPasswordError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
+  const theme = 'light';
   
   const handleGoogleLogin = () => {
-    window.location.href = '/auth/google'; // Redirect to Google login route
+    //window.location.href = '/auth/google'; // Redirect to Google login route
+    Swal.fire({
+      title: "🚀 Future Feature!",
+      text: "This feature is coming soon. Stay tuned!",
+      icon: "info",
+      confirmButtonText: "Got it!",
+      background: theme === "dark" ? "#222" : "#fff",
+      color: theme === "dark" ? "#fff" : "#000",
+      confirmButtonColor: theme === "dark" ? "#007bff" : "#0d6efd",
+  });
   };
     
   const handleRegisterRedirect = () => {
@@ -77,7 +88,6 @@ export default function LoginPage() {
         setIsLoading(true);
         const url = `${process.env.VITE_EDUSHARE_BACKEND_URL}/api/auth/login`;
         console.log('url: '+url);
-        // const url = `http://localhost:3100/auth/login`;
         // prepare the payload and call backend
         const response = await fetch(url, {
           method: 'POST',
@@ -91,9 +101,7 @@ export default function LoginPage() {
             password:password.trim()
           })
         });
-  
-        // setIsLoading(false);
-  
+    
         // check if backedn sent a valid response
         if (!response.ok) {
           throw new Error('Authentication failed');
@@ -105,9 +113,12 @@ export default function LoginPage() {
         setPassword("");
   
         localStorage.setItem('token',result.token);
-        localStorage.setItem('userId',result.user.id);
-        localStorage.setItem('username',result.user.username);
+        localStorage.setItem('userId',result.user.userId);
+        localStorage.setItem('email',result.user.email);
         localStorage.setItem('userRole',result.user.role);
+        localStorage.setItem('fullName',result.user.fullName);
+        localStorage.setItem('firstName',result.user.firstName);
+        localStorage.setItem('lastName',result.user.lastName);
         Swal.fire({
           position: "top-end",
           icon: "success",
@@ -123,7 +134,6 @@ export default function LoginPage() {
         }
     
       } catch (error) {
-        setIsLoading(false);
         console.error('Error during Registration:', error);
         Swal.fire({
           position: "top-end",
@@ -139,11 +149,21 @@ export default function LoginPage() {
     }
   };
 
+  const handleFeatureAlert = () => {
+    Swal.fire({
+      icon: 'info',
+      title: 'Coming Soon!',
+      text: 'This feature is not yet available but will be added in the future.',
+      confirmButtonColor: '#3085d6',
+      confirmButtonText: 'Got it!',
+    });
+  };
+
   // const bgStylesLogin = {
   //   background: 'linear-gradient(135deg, #b3d9ff, #e0bbe4)'
   // };
   const bgStylesLogin = {
-    backgroundImage: 'url(https://img.freepik.com/free-photo/3d-render-graduation-cap-books-diploma_107791-15907.jpg?t=st=1737175337~exp=1737178937~hmac=a9a77db79e22fbbd5c888cac9667e3e26381aecd108e7c934004d166081aa540&w=1380)',
+    backgroundImage: `url(${Edushare})`,
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',
     backgroundPosition: 'center'
@@ -153,17 +173,17 @@ export default function LoginPage() {
 
   return (
     <div className="container-fluid vh-100 d-flex align-items-center justify-content-center" style={bgStylesLogin}>
-      <div className="row w-75" style={{background:'rgba(180,180,180,0.7)', boxShadow:'0 10px 16px rgba(0,0,0,0.8)', border:'2px solid black', borderRadius:'10px'}}>
+      <div className="row w-75" style={{background:'rgba(180,180,180,0.9)', boxShadow:'0 10px 16px rgba(0,0,0,0.8)', border:'2px solid black', borderRadius:'10px'}}>
         {/* left col */}
         <div className="col-md-6 p-3 bg-transparent">
           <div className="card-header">
-            <h3 className="text-left font-weight-light my-1">Login</h3>
-            <h6>(Teachers must login with their credentials and not through google. Else, you will be accessing your student account.)</h6>
+            <h3 className="text-left fw-bold fs-2 my-1">Login</h3>
+            <h6 className="fw-bold fs-6">(Teachers must login with their credentials and not through google. Else, you will be accessing your student account.)</h6>
           </div>
           <div className="card-body">
             <form onSubmit={handleLogin} noValidate>
               <div className="mb-2">
-                <label htmlFor="loginUsername" className="form-label mb-3">Email</label>
+                <label htmlFor="loginUsername" className="form-label fw-bold fs-4 mb-3">Email</label>
                 <input 
                   type="text" 
                   className="form-control" 
@@ -175,7 +195,7 @@ export default function LoginPage() {
                 <div style={{color:'red', fontSize:'small'}}>{usernameError}</div>
               </div>
               <div className="mb-2">
-                <label htmlFor="loginPassword" className="form-label">Password</label>
+                <label htmlFor="loginPassword" className="form-label fw-bold fs-4">Password</label>
                 <input 
                   type="password" 
                   className="form-control" 
@@ -187,15 +207,15 @@ export default function LoginPage() {
                 <div style={{color:'red', fontSize:'small'}}>{PasswordError}</div>
               </div>
               <div className="mb-2 form-check" style={{textAlign:'left'}}>
-                <input type="checkbox" className="form-check-input" id="loginCheckbox"/>
+                <input type="checkbox" className="form-check-input" id="loginCheckbox" onClick={handleFeatureAlert}/>
                 <label className="form-check-label" htmlFor="loginCheckbox">Remember Me</label>
               </div>
               <div className="mb-2" style={{textAlign:'left'}}>
-              <Link className="small" to="/password">Forgot Password?</Link>
+                <Link className="small" to="#" onClick={handleFeatureAlert}>Forgot Password?</Link>
               </div>
               <div className="row mb-1">
                 <div className="col-md-6">
-                  <button type="submit" className="btn btn-outline-primary w-100 mt-2">
+                  <button type="submit" className="btn btn-primary w-100 mt-2">
                     {isLoading ? 
                       <div className="spinner-border" role="status">
                         <span className="visually-hidden">Authenticating...</span>
@@ -204,9 +224,9 @@ export default function LoginPage() {
                   </button>
                 </div>
                 <div className="col-md-6">
-                  <button className="btn btn-outline-dark w-100 mt-2">
-                    <Link to='/' className='text-dark'>
-                      <i className="bi bi-house-fill"></i>Home
+                  <button className="btn btn-dark w-100 mt-2">
+                    <Link to='/' className='text-light'>
+                      <i className="bi bi-house-fill me-2"></i>Home
                     </Link>
                   </button>
                 </div>
@@ -217,14 +237,14 @@ export default function LoginPage() {
         {/* right col */}
         <div className="col-md-6 p-3 bg-transparent border-start d-flex flex-column justify-content-center align-items-center">
           <div className="text-center mb-2">
-            <h4 className="mb-3">Need an account? Sign up!</h4>
-            <button type="button" className="btn btn-outline-primary w-75 mb-2" onClick={handleRegisterRedirect}>
+            <h4 className=" fw-bold fs-3 mb-3">Need an account? Sign up!</h4>
+            <button type="button" className="btn btn-primary w-75 mb-2 rounded-pill" onClick={handleRegisterRedirect}>
               Go to Registration <i className="bi bi-box-arrow-in-right"></i>
             </button>
-            <div className="text-muted mb-2">
+            <div className="text-muted mb-2 fw-bold">
               or Authenticate using Google
             </div>
-            <button type="button" className="btn btn-outline-danger w-75 mb-2" onClick={handleGoogleLogin}>
+            <button type="button" className="btn btn-danger w-75 mb-2 rounded-pill" onClick={handleGoogleLogin}>
               <i className="bi bi-google"></i><span> </span>Login with Google
             </button>            
           </div>

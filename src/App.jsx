@@ -11,7 +11,7 @@ import Mission from "./pages/js/missionPage/Mission";
 import CourseList from "./pages/js/couseList/CourseList";
 import RegisterPage from "./pages/js/registerPage/RegisterPage";
 import LoginPage from "./pages/js/loginPage/LoginPage";
-import TeacherRegistration from "./TeacherRegistration/TeacherRegistration";
+import TeacherRegistration from "./pages/js/TeacherRegistration/TeacherRegistration";
 import StudentDashboard from "./pages/js/studentDashboard/StudentDashboard"
 import TeacherDashboard from "./pages/js/teacherDashboard/TeacherDashboard";
 import AllQuiz from "./pages/js/quizPage/AllQuiz";
