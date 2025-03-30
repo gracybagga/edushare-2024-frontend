@@ -37,6 +37,7 @@ const AllQuiz = ({ theme }) => {
   const [score, setScore] = useState(0);
   const [showResult, setShowResult] = useState(false);
   const navigate = useNavigate();
+  const quizIdArray = location.state?.quizIdArray || [];
 
   const questions = quizData[selectedQuiz];
 

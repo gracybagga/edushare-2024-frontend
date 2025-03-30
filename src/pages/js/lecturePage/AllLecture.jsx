@@ -1,14 +1,197 @@
 import React, { useEffect, useState } from 'react';
 import scholarship from "../../img/scholarship.png";
 import {useLocation, useNavigate} from 'react-router-dom';
+import LoadingAndErrorComponent from "../../../GeneralComponents/js/LoadingAndErrorComponent";
 
 const AllLecture = () => {
-  const navigate = useNavigate();
+    const navigate = useNavigate();
     const location = useLocation();
     const theme = location.state?.theme || "light"; // Extract theme from location.state
+    const lectureIdArray = location.state?.lectureIdArray || [];
+    const courseId = location.state?.courseId || '';
   
     // Combined Lecture Data (ID, Title, and Content in one structure)
-  const [lectures, setLectures] = useState([
+    const [lectures, setLectures] = useState([]);
+    const [currentLecture, setCurrentLecture] = useState(null); // Default
+
+
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+  
+    //---------------------------------------
+    useEffect(() => {
+        const fetchLectures = async () => {
+            setLoading(true);
+            setError(null);
+
+            if (!lectureIdArray) {
+              setLoading(false);
+              setError("No lectures available.");
+              return;
+            }
+
+            try {
+                let currUserRole = localStorage.getItem('userRole');
+                let token = localStorage.getItem('token');
+
+                if (currUserRole === 'STUDENT' || currUserRole === 'TEACHER') {
+                    setError("You are not authorized to access these lectures.");
+                    setLoading(false);
+                    return;
+                }
+
+                const response = await fetch(`${process.env.VITE_EDUSHARE_BACKEND_URL}/api/lectures/${courseId}`, {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+                        "Content-Type": "application/json",
+                        "X-Requested-With": "XMLHttpRequest",
+                        "Accept": "application/json",
+                    }
+                });
+
+                if (!response.ok) {
+                    throw new Error('Failed to fetch lectures');
+                }
+
+                const result = await response.json();
+                if (result.data.length === 0) {
+                    setError("No lectures available.");
+                } else {
+                    setLectures(result.data);
+                }
+            } catch (err) {
+                setError(err.message);
+            } finally {
+                setLoading(false);
+            }
+        };
+        fetchLectures();
+    }, [courseId]);
+
+    //---------------------------------------
+    // Intially setting up the current lecture
+    useEffect(() => {
+      console.log(lectures);
+      if (lectures.length > 0) {
+        setCurrentLecture(lectures[0]);
+      }
+    }, [lectures]);
+
+    // Theme-based styling
+    const isDark = theme === "dark";
+    const backgroundStyle = isDark ? "linear-gradient(to right, #232526, #414345)" : "linear-gradient(to right, #faf8ff, #ebe4ff)";
+
+    return (
+        <div>
+            <LoadingAndErrorComponent loading={loading} error={error}/>
+
+            {!loading && !error && (
+                <div className="vh-100" style={{background: backgroundStyle, overflowX: 'hidden'}}>
+                    {/* Navbar */}
+                    <nav
+                        className={`navbar navbar-expand-lg ${theme === "dark" ? "bg-dark navbar-dark" : "bg-light navbar-light"} shadow`}>
+                        <div className="container-fluid">
+                          <img src={scholarship} alt='logo' style={{maxHeight: '35px'}}/>
+                          <span className="navbar-brand fw-bold">EduShare</span>
+                          <button className="btn btn-outline-primary" onClick={() => navigate('/student-course-dashboard', { state: { courseId }})}>
+                            ← Course
+                          </button>
+                        </div>
+                    </nav>
+                    <div className="row px-2">
+                        {/* Left Column: List of Lectures */}
+                        <div className="col-md-4 border-end py-2">
+                            <ul className="list-group">
+                                {lectures.map((lecture) => (
+                                    <li
+                                        key={lecture.id}
+                                        className={`list-group-item ${currentLecture && currentLecture.id === lecture.id ? "active" : ""}`}
+                                        onClick={() => setCurrentLecture(lecture)}
+                                        style={{cursor: 'pointer'}}
+                                    >
+                                      {lecture.title}
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+
+                        {/* Right Column: Lecture Content */}
+                        <div className="col-md-8 p-4">
+                          <LectureContent isDark={isDark} currentLecture={currentLecture} />
+                        </div>
+                    </div>
+                </div>
+            )}
+        </div>
+
+    );
+};
+
+function LectureContent({isDark, currentLecture}) {
+  const [lecture, setLecture] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [lectureContent, setLectureContent] = useState(null);
+
+  useEffect(() => {
+    const fetchLecture = async () => {
+      if (!currentLecture || !currentLecture.description) {
+        setLoading(false);
+        setError("No Lecture data available.");
+        return;
+      }
+
+      let currUserRole = localStorage.getItem('userRole');
+      if (currUserRole === 'STUDENT' || currUserRole === 'TEACHER') {
+        try {
+          setLoading(true);
+          setError(null);
+          let token = localStorage.getItem('token');
+          const response = await fetch(`${process.env.REACT_APP_EDUSHARE_BACKEND_URL}/api/content/lectures/`, {
+            method: 'POST',
+            headers: {
+              'Authorization': `Bearer ${token}`,
+              "Content-Type": "application/json",
+              "X-Requested-With": "XMLHttpRequest",
+              "Accept": "application/json",
+            },
+            body: JSON.stringify({topic:lecture.description})
+          });
+          if (!response.ok) {
+            throw new Error('Lecture note could note be fetched');
+          }
+          const result = await response.json();
+          console.log(result);
+          // Purge the lecture data to remove unnecessary or invalid items
+          let LectureData = result.content;
+          // rawLectureData = rawLectureData.slice(0, -4);// there were three extra backticks at the end
+          console.log('lecture string: '+LectureData);
+          // let lectureArray = JSON.parse(rawLectureData);
+          // console.log(lectureArray);
+          setLectureContent(LectureData); // Set only valid lectures
+        } catch (error) {
+          setError(error.message);
+        } finally {
+          setLoading(false);
+        }
+      }
+    };
+
+    fetchLecture();
+  }, [currentLecture]); // Dependency array includes currentLecture
+
+  if (loading) return <><p>Loading...</p></>;
+  if (error) return <p>Error: {error}</p>;
+  return (
+      <div id="lectureContent" className={`${isDark ? "text-light" : " text-dark"}`} dangerouslySetInnerHTML={{__html: lectureContent}}/>
+  )
+}
+
+export default AllLecture;
+
+/*
+* const [lectures, setLectures] = useState([
     {
       id: 1,
       title: "Introduction to AI",
@@ -110,112 +293,4 @@ const AllLecture = () => {
     </ul>`
     }
   ]);
-  
-  const [selectedLectureId, setSelectedLectureId] = useState(lectures[0].id); // Default to first lecture
-  const [lectureContent, setLectureContent] = useState(lectures[0].content);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-
-  
-//---------------------------------------
-// useEffect(() => {
-//   const fetchLectures = async () => {
-//       setLoading(true);
-//       setError(null);
-//
-//       try {
-//           let currUserRole = localStorage.getItem('userRole');
-//           if (currUserRole !== 'STUDENT') {
-//               setError("You are not authorized to access these lectures.");
-//               setLoading(false);
-//               return;
-//           }
-//
-//           const response = await fetch(`${process.env.VITE_EDUSHARE_BACKEND_URL}/api/lectures`, {
-//               method: 'GET',
-//               headers: {
-//                   "Content-Type": "application/json",
-//                   "X-Requested-With": "XMLHttpRequest",
-//                   "Accept": "application/json",
-//               }
-//           });
-//
-//           if (!response.ok) {
-//               throw new Error('Failed to fetch lectures');
-//           }
-//
-//           const result = await response.json();
-//           if (result.length === 0) {
-//               setError("No lectures available.");
-//           } else {
-//               setLectures(result);
-//               setSelectedLectureId(result[0].id);
-//           }
-//       } catch (err) {
-//           setError(err.message);
-//       } finally {
-//           setLoading(false);
-//       }
-//   };
-//   // fetchLectures();
-// }, []);
-
-//---------------------------------------
-// Update content based on selected lecture
-useEffect(() => {
-  const selectedLecture = lectures.find(lecture => lecture.id === selectedLectureId);
-  if (selectedLecture) {
-    setLectureContent(selectedLecture.content);
-  }
-}, [selectedLectureId, lectures]);
-
-  // Handle lecture selection
-  const handleLectureSelect = (id) => {
-    setSelectedLectureId(id);
-  };
-
-  // Theme-based styling
-  const isDark = theme === "dark";
-  const backgroundStyle = isDark
-    ? "linear-gradient(to right, #232526, #414345)" // Dark theme
-    : "linear-gradient(to right, #faf8ff, #ebe4ff)"; // Light theme
-
-  return (
-    <div className="vh-100" style={{ background: backgroundStyle, overflowX:'hidden' }}>
-      {/* Navbar */}
-      <nav className={`navbar navbar-expand-lg ${theme === "dark" ? "bg-dark navbar-dark" : "bg-light navbar-light"} shadow`}>
-        <div className="container-fluid">
-          <img src={scholarship} alt='logo' style={{maxHeight: '35px'}}/>
-          <span className="navbar-brand fw-bold">EduShare</span>
-          <button className="btn btn-outline-primary" onClick={() => navigate(-1)}>
-            ← Course
-          </button>
-        </div>
-      </nav>
-      <div className="row px-2">
-        {/* Left Column: List of Lectures */}
-        <div className="col-md-4 border-end py-2">
-          <ul className="list-group">
-            {lectures.map((lecture) => (
-              <li
-                key={lecture.id}
-                className={`list-group-item ${selectedLectureId === lecture.id ? 'active' : ''}`}
-                onClick={() => handleLectureSelect(lecture.id)}
-                style={{ cursor: 'pointer' }}
-              >
-                {lecture.title}
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        {/* Right Column: Lecture Content */}
-        <div className="col-md-8 p-4">
-          <div id="lectureContent" className={`${isDark ? "text-light" : " text-dark"}`} dangerouslySetInnerHTML={{ __html: lectureContent }} />
-        </div>
-      </div>
-    </div>
-  );
-};
-
-export default AllLecture;
+* */

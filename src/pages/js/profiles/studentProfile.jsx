@@ -1,71 +1,123 @@
-// import React, { useState, useEffect } from 'react';
-// import { useParams } from 'react-router-dom';
-// import '../css/studentProfile.css'; // Ensure this CSS file replicates the <style> from the HTML
+import React, { useState, useEffect } from 'react';
+import {useNavigate, useParams} from 'react-router-dom';
+import LoadingAndErrorComponent from "../../../GeneralComponents/js/LoadingAndErrorComponent"; // Ensure this CSS file replicates the <style> from the HTML
 
-// function StudentProfile() {
-//   const { username } = useParams(); // Capture the username from the URL
-//   const [profileData, setProfileData] = useState(null);
+function StudentProfile() {
+    const fullName = localStorage.getItem('fullName');
+    const [profileData, setProfileData] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+    const userId = localStorage.getItem('userId');
+    const token = localStorage.getItem('token');
+    const navigate = useNavigate();
+    const theme = location.state?.theme || "light"; // Default to 'light' if no theme is set
 
-//   useEffect(() => {
-//     // Fetch profile data from the server
-//     const fetchProfile = async () => {
-//       try {
-//         const response = await fetch(`/profileStudent/${username}`);
-//         if (!response.ok) {
-//           throw new Error('Network response was not ok');
-//         }
-//         const data = await response.json();
-//         setProfileData(data);
-//       } catch (error) {
-//         console.error('Error fetching profile:', error);
-//       }
-//     };
+    useEffect(() => {
+        const fetchProfile = async () => {
+            try {
+                const response = await fetch(
+                    `${process.env.VITE_EDUSHARE_BACKEND_URL}/api/student/profile/${userId}`, {
+                        method: 'GET',
+                        headers: {
+                            'Authorization': `Bearer ${token}`,
+                            "Content-Type": "application/json",
+                            "X-Requested-With": "XMLHttpRequest",
+                            "Accept": "application/json",
+                        }
+                    }
+                );
+                if (!response.ok) {
+                    throw new Error("Network response was not ok");
+                }
+                const data = await response.json();
+                setProfileData(data.data);
+            } catch (error) {
+                setError("Failed to load profile.");
+            } finally {
+                setLoading(false);
+            }
+        };
+        fetchProfile();
+    }, [userId]);
 
-//     fetchProfile();
-//   }, [username]);
+    // Theme-based classes
+    const themeClasses = {
+        light: {
+            card: "card shadow-lg p-4 bg-white text-dark",
+            button: "btn btn-primary",
+            listItem: "list-group-item",
+        },
+        dark: {
+            card: "card shadow-lg p-4 bg-dark text-white",
+            button: "btn btn-outline-light",
+            listItem: "list-group-item bg-secondary text-white",
+        },
+        blue: {
+            card: "card shadow-lg p-4 bg-primary text-white",
+            button: "btn btn-light text-primary",
+            listItem: "list-group-item bg-light text-dark",
+        },
+    };
 
-//   if (!profileData) {
-//     return <div>Loading...</div>;
-//   }
+    const currentTheme = themeClasses[theme] || themeClasses.light;
 
-//   return (
-//     <div className="main-container">
-//         <div className="profile-section">
-//             <div className="user-image" style={{ backgroundImage: `url('${profileData.img}')` }}></div>
-//             <button className="back-button" onClick={() => window.history.back()}>Back</button>
-//         </div>
-//         <div className="user-details">
-//             <div className="user-info">
-//                 <h1>{profileData.username}'s Profile</h1>
-//                 <div className="level-bar">
-//                     <div className="level-progress">{`Level ${profileData.level}`}</div>
-//                 </div>
-//                 <p>Role: {profileData.role}</p>
-//                 <p>First Name: {profileData.firstName}</p>
-//                 <p>Last Name: {profileData.lastName}</p>
-//                 <p>Username: {profileData.username}</p>
-//             </div>
-//             <div className="account-setup">
-//                 <h2>Account Setup:</h2>
-//                 <ul>
-//                     <li>Location: {profileData.accountSetup.location}</li>
-//                     <li>Gender: {profileData.accountSetup.gender}</li>
-//                     <li>Grade Taught: {profileData.accountSetup.gradeTaught?.join(', ')}</li>
-//                     <li>Subjects: {profileData.accountSetup.subjects?.join(', ')}</li>
-//                     <li>About Me: {profileData.accountSetup.aboutMe}</li>
-//                     <li>Teaches At: {profileData.accountSetup.teachesAt}</li>
-//                     <li>Number of Invites: {profileData.numOfInvites}</li>
-//                     <li>Added By: {profileData.addedBy}</li>
-//                     <li>Date Joined: {profileData.dateJoined}</li>
-//                 </ul>
-//             </div>
-//         </div>
-//     </div>
-// );
+    return (
+        <div className="container mt-5">
+            <LoadingAndErrorComponent loading={loading} error={error} />
 
-// }
+            {!loading && !error && (
+                <div className="row justify-content-center">
+                    <div className="col-md-8">
+                        <div className={currentTheme.card}>
+                            <div className="text-center">
+                                <img
+                                    src="https://img.freepik.com/premium-vector/avatar-profile-icon_188544-4755.jpg?w=360"
+                                    alt="Profile"
+                                    className="rounded-circle"
+                                    width="120"
+                                />
+                                <h2 className="mt-3">{fullName}'s Profile</h2>
+                            </div>
 
-// export default StudentProfile;
+                            <div className="card-body">
+                                <h5 className="fw-bold">Basic Information</h5>
+                                <p><strong>First Name:</strong> {profileData.firstName}</p>
+                                <p><strong>Last Name:</strong> {profileData.lastName}</p>
+                                <p><strong>Email:</strong> {profileData.email}</p>
+                                <p><strong>Role:</strong> STUDENT</p>
+
+                                <h5 className="mt-3 fw-bold">Other Details</h5>
+                                <ul className="list-group">
+                                    <li className={currentTheme.listItem}><strong>Phone:</strong> {profileData.phone}</li>
+                                    <li className={currentTheme.listItem}><strong>Gender:</strong> {profileData.gender}</li>
+                                    <li className={currentTheme.listItem}><strong>UserId:</strong> {profileData.userId}</li>
+                                    <li className={currentTheme.listItem}><strong>Date of Birth:</strong> {profileData.dateOfBirth}</li>
+                                    <li className={currentTheme.listItem}><strong>Street:</strong> {profileData.street}</li>
+                                    <li className={currentTheme.listItem}><strong>Province:</strong> {profileData.province}</li>
+                                    <li className={currentTheme.listItem}><strong>Country:</strong> {profileData.country}</li>
+                                    <li className={currentTheme.listItem}><strong>ZIP:</strong> {profileData.zip}</li>
+                                    <li className={currentTheme.listItem}><strong>Date Joined:</strong> {profileData.dateJoined}</li>
+                                </ul>
+                            </div>
+
+                            <div className="text-center mt-4">
+                                <button
+                                    className={currentTheme.button}
+                                    onClick={() => navigate("/student-dashboard")}
+                                >
+                                    Back to Dashboard
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            )}
+        </div>
+    );
+
+}
+
+export default StudentProfile;
 
 
 

@@ -13,6 +13,8 @@ const RecentlyEnrolledCourses = ({ courses, theme }) => {
         }
     };
 
+
+
     return (
         <div>
             <div
@@ -38,7 +40,6 @@ const RecentlyEnrolledCourses = ({ courses, theme }) => {
                                     />
                                     <div className="flex-grow-1 d-flex flex-column">
                                         <strong>{course.name}</strong>
-                                        <span className={`${theme === 'dark' ? 'text-secondary' : 'text-muted'}`}>{course.category}</span>
                                     </div>
                                     <div>
                                         <button className={`mx-2 btn btn-${theme==='light'?'primary':'secondary'} btn-md rounded-pill`}>

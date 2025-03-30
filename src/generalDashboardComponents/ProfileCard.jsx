@@ -11,10 +11,10 @@ const ProfileCard = ({ userName, theme, enrolledCourses }) => {
         {/* Button to navigate to Profile */}
         <div className="d-flex justify-content-center mt-1 ">
           <Link
-            to="/profile"
+            to="/student-profile"
             className="btn btn-primary btn-lg rounded-pill px-4 py-2 mb-1 "
             style={{ fontSize: '1rem'}}
-            state = {{enrolledCourses}}
+            state = {{enrolledCourses, theme}}
           >
             Go to Profile
           </Link>
