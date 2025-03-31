@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import scholarship from "../../img/scholarship.png";
 import { useLocation, useNavigate } from "react-router-dom";
 import LoadingAndErrorComponent from "../../../GeneralComponents/js/LoadingAndErrorComponent";
+import Swal from "sweetalert2";
 
 
 const StudentAssignment = () => {
@@ -40,7 +41,7 @@ const StudentAssignment = () => {
         let currUserRole = localStorage.getItem('userRole');
         let token = localStorage.getItem('token');
 
-        if (currUserRole === 'STUDENT' || currUserRole === 'TEACHER') {
+        if (currUserRole !== 'STUDENT' || currUserRole !== 'TEACHER') {
           setError("You are not authorized to access these assignments.");
           setLoading(false);
           return;
@@ -137,6 +138,18 @@ const StudentAssignment = () => {
 };
 
 function AssignmentContent({isDark, content}) {
+  import React from 'react';
+  import Swal from 'sweetalert2';
+  const handleFeatureAlert = () => {
+    Swal.fire({
+      icon: 'info',
+      title: 'Coming Soon!',
+      text: 'This feature is not yet available but will be added in the future.',
+      confirmButtonColor: '#3085d6',
+      confirmButtonText: 'Got it!',
+    });
+  };
+
   return (
       <div className=" ">
         <div id="selectedFile" className={`${isDark ? "text-light" : " text-dark"}`}
@@ -149,7 +162,7 @@ function AssignmentContent({isDark, content}) {
               id="fileInput"
               className="d-none"
           />
-          <button className="btn btn-primary rounded-pill" onClick={handleUploadClick}>
+          <button className="btn btn-primary rounded-pill" onClick={handleFeatureAlert}>
             Upload Response
           </button>
 

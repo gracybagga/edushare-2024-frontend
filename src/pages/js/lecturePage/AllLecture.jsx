@@ -34,7 +34,7 @@ const AllLecture = () => {
                 let currUserRole = localStorage.getItem('userRole');
                 let token = localStorage.getItem('token');
 
-                if (currUserRole === 'STUDENT' || currUserRole === 'TEACHER') {
+                if (currUserRole !== 'STUDENT' || currUserRole !== 'TEACHER') {
                     setError("You are not authorized to access these lectures.");
                     setLoading(false);
                     return;
@@ -129,7 +129,6 @@ const AllLecture = () => {
 };
 
 function LectureContent({isDark, currentLecture}) {
-  const [lecture, setLecture] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [lectureContent, setLectureContent] = useState(null);
@@ -156,7 +155,7 @@ function LectureContent({isDark, currentLecture}) {
               "X-Requested-With": "XMLHttpRequest",
               "Accept": "application/json",
             },
-            body: JSON.stringify({topic:lecture.description})
+            body: JSON.stringify({topic:currentLecture.description})
           });
           if (!response.ok) {
             throw new Error('Lecture note could note be fetched');
