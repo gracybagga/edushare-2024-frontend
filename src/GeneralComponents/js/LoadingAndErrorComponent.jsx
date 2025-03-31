@@ -1,7 +1,9 @@
 import React from "react";
 import { motion } from "framer-motion";
+import {useNavigate} from "react-router-dom";
 
 const LoadingAndErrorComponent = ({ loading, error }) => {
+    const navigate = useNavigate();
     if (loading) {
         return (
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '100vh', textAlign: 'center' }}>
@@ -37,6 +39,7 @@ const LoadingAndErrorComponent = ({ loading, error }) => {
                 <div style={{ fontSize: '50px', marginBottom: '10px' }}>🚨</div>
                 <p style={{ fontSize: '20px', fontWeight: 'bold' }}>Uh-oh! Something broke.</p>
                 <p style={{ fontSize: '16px' }}>{error}</p>
+                <button className={`btn btn-danger rounded-pill`} onClick={() => {navigate(-1)}}>Simon Go Back</button>
             </motion.div>
         );
     }

@@ -67,11 +67,11 @@ const StudentCourseDashboard = () => {
                     className={`course-dashboard ${theme === "dark" ? "bg-dark text-white" : "bg-light text-dark"} min-vh-100`}>
                     {/* Navbar */}
                     <nav
-                        className={`navbar navbar-expand-lg ${theme === "dark" ? "navbar-dark bg-black" : "navbar-light bg-white"} shadow-sm`}>
+                        className={`navbar navbar-expand-lg ${theme === "light" ? "navbar-dark bg-black" : "navbar-light bg-white"} shadow-sm`}>
                         <div className="container-fluid">
                             <img src={scholarship} alt='logo' style={{maxHeight: '35px'}}/>
                             <span className="navbar-brand fw-bold">EduShare</span>
-                            <button className="btn btn-outline-primary" onClick={navigateToDashboard}>⬅ Back to
+                            <button className="btn btn-primary rounded-pill" onClick={navigateToDashboard}>⬅ Back to
                                 Dashboard
                             </button>
                         </div>

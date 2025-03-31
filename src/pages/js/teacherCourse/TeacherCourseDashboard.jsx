@@ -68,11 +68,11 @@ const TeacherCourseDashboard = () => {
                     className={`course-dashboard ${theme === "dark" ? "bg-dark text-white" : "bg-light text-dark"} min-vh-100`}>
                     {/* Navbar */}
                     <nav
-                        className={`navbar navbar-expand-lg ${theme === "dark" ? "navbar-dark bg-black" : "navbar-light bg-white"} shadow-sm`}>
+                        className={`navbar navbar-expand-lg ${theme === "light" ? "navbar-dark bg-black" : "navbar-light bg-white"} shadow-sm`}>
                         <div className="container-fluid">
                             <img src={scholarship} alt='logo' style={{maxHeight: '35px'}}/>
                             <span className="navbar-brand fw-bold">EduShare</span>
-                            <button className="btn btn-outline-primary" onClick={navigateToDashboard}>⬅ Back to
+                            <button className="btn btn-primary rounded-pill" onClick={navigateToDashboard}>⬅ Back to
                                 Dashboard
                             </button>
                         </div>
@@ -102,12 +102,12 @@ const TeacherCourseDashboard = () => {
                                                 <h5 className="card-title fw-bold">📚 Lecture Notes</h5>
                                                 <p className="card-text">Read engaging lecture notes.</p>
                                                 <p className="text-muted">Total 5 Lecture notes</p>
-                                                <Link to='/teacher-course-lectures' state={{theme: theme}}>
+                                                <Link to='/teacher-course-lectures' state={{theme: theme, courseId:course._id}}>
                                                     <button className={`btn btn-primary rounded-pill w-100 mb-1`}>View
                                                         them
                                                     </button>
                                                 </Link>
-                                                <Link to='/teacher-course-lectures-new' state={{theme: theme}}>
+                                                <Link to='/teacher-course-lectures-new' state={{theme: theme, courseId:course._id}}>
                                                     <button
                                                         className={`btn btn-${theme === 'light' ? 'secondary' : 'light'} rounded-pill w-100 mb-1`}>Create
                                                         new
@@ -124,12 +124,12 @@ const TeacherCourseDashboard = () => {
                                                 <h5 className="card-title fw-bold">🎥 Video Lectures</h5>
                                                 <p className="card-text">Watch engaging lectures and tutorials.</p>
                                                 <p className="text-muted">Total 5 videos</p>
-                                                <Link to='/student-course-videos' state={{theme: theme}}>
+                                                <Link to='/teacher-course-videos' state={{theme: theme, courseId:course._id}}>
                                                     <button className={`btn btn-success rounded-pill w-100 mb-1`}>Watch
                                                         Now
                                                     </button>
                                                 </Link>
-                                                <Link to='/teacher-course-videos-new' state={{theme: theme}}>
+                                                <Link to='/teacher-course-videos-new' state={{theme: theme, courseId:course._id}}>
                                                     <button
                                                         className={`btn btn-${theme === 'light' ? 'secondary' : 'light'} rounded-pill w-100 mb-1`}>Create
                                                         new
@@ -146,7 +146,7 @@ const TeacherCourseDashboard = () => {
                                                 <h5 className="card-title fw-bold">📝 Assignments</h5>
                                                 <p className="card-text">Complete and submit your assignments.</p>
                                                 <p className="text-muted">Total 4 Assignments</p>
-                                                <Link to='/student-course-assignments' state={{theme: theme}}>
+                                                <Link to='/teacher-course-assignments' state={{theme: theme, courseId:course._id}}>
                                                     <button className={`btn btn-danger rounded-pill w-100 mb-1`}>View
                                                         Assignments
                                                     </button>
@@ -181,12 +181,12 @@ const TeacherCourseDashboard = () => {
                                                 <h5 className="card-title fw-bold">🧩 Quizzes</h5>
                                                 <p className="card-text">Test your knowledge with quizzes.</p>
                                                 <p className="text-muted">Total 5 Quizzes</p>
-                                                <Link to='/student-course-quizzes' state={{theme: theme}}>
+                                                <Link to='/teacher-course-quizzes' state={{theme: theme, courseId:course._id}}>
                                                     <button className={`btn btn-warning rounded-pill w-100 mb-1`}>Take a
                                                         Quiz
                                                     </button>
                                                 </Link>
-                                                <Link to='/teacher-course-quizzes-new' state={{theme: theme}}>
+                                                <Link to='/teacher-course-quizzes-new' state={{theme: theme, courseId:course._id}}>
                                                     <button
                                                         className={`btn btn-${theme === 'light' ? 'secondary' : 'light'} rounded-pill w-100 mb-1`}>Create
                                                         new
@@ -207,7 +207,7 @@ const TeacherCourseDashboard = () => {
                                             <div className="card-header"
                                                  style={{fontSize: '1.70rem', fontWeight: 'bold'}}>📅 Upcoming Activities
                                             </div>
-                                            <div className="card-body" style={{overflowY: 'auto', maxHeight: '300px'}}>
+                                            <div className="card-body" style={{overflowY: 'auto', height: '300px'}}>
                                                 <ul className="list-group list-group-flush">
                                                     <li
                                                         className={`list-group-item ${theme === "dark" ? "bg-secondary text-white" : ""}`}>

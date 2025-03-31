@@ -6,10 +6,10 @@ const RecentlyEnrolledCourses = ({ courses, theme }) => {
 
     const handleCourseClick = (courseId) => {
         if (localStorage.getItem('userRole')==='STUDENT') {
-            navigate("/student-course-dashboard", { state: { courseId } });
+            navigate("/student-course-dashboard", { state: { courseId, theme } });
         }
         if (localStorage.getItem('userRole')==='TEACHER') {
-            navigate("/teacher-course-dashboard", { state: { courseId } });
+            navigate("/teacher-course-dashboard", { state: { courseId, theme } });
         }
     };
 
@@ -22,7 +22,7 @@ const RecentlyEnrolledCourses = ({ courses, theme }) => {
                 style={{ height:'412px' , overflowY: "auto" }}
             >
                 <div className="card-body">
-                    <h3 className="card-title">My Courses</h3>
+                    <h3 className="card-title text-center">My Courses</h3>
                     {courses.length > 0 ? (
                         <ul className="list-group">
                             {courses.map((course) => (
@@ -36,13 +36,13 @@ const RecentlyEnrolledCourses = ({ courses, theme }) => {
                                         src={course.image}
                                         alt={course.name}
                                         style={{ width: "40px", height: "40px" }}
-                                        className="ms-2 me-3"
+                                        className="ms-1 me-3"
                                     />
                                     <div className="flex-grow-1 d-flex flex-column">
                                         <strong>{course.name}</strong>
                                     </div>
                                     <div>
-                                        <button className={`mx-2 btn btn-${theme==='light'?'primary':'secondary'} btn-md rounded-pill`}>
+                                        <button className={`me-2 btn btn-${theme==='light'?'primary':'secondary'} btn-md rounded-pill`}>
                                             View
                                         </button>
                                     </div>
@@ -50,7 +50,7 @@ const RecentlyEnrolledCourses = ({ courses, theme }) => {
                             ))}
                         </ul>
                     ) : (
-                        <p className="text-muted">No courses in your account yet.</p>
+                        <p className={`${theme==='light'?'text-muted':'text-secondary'}`}>No courses in your account yet.</p>
                     )}
                 </div>
             </div>

@@ -8,12 +8,12 @@ const AllVideoLectures = () => {
   const location = useLocation();
   const theme = location.state?.theme || "dark"; // Extract theme from location.state
   const videoIdArray = location.state?.videoIdArray || [];
-  const courseId = location.state?.courseId || '';
+  const courseId = location.state?.courseId || 'Hello';
 
   // Sample data simulating backend response
   const [videos, setVideos]  = useState([]);
 
-  const [selectedVideo, setSelectedVideo] = useState(videos[0]);
+  const [selectedVideo, setSelectedVideo] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -27,18 +27,19 @@ const AllVideoLectures = () => {
               setError("No videos available.");
               return;
           }
+          let currUserRole = localStorage.getItem('userRole');
+          console.log(currUserRole);
 
+          if (currUserRole !== 'STUDENT' && currUserRole !== 'TEACHER') {
+              setError("You are not authorized to access these lectures.");
+              setLoading(false);
+              return;
+          }
           try {
-              let currUserRole = localStorage.getItem('userRole');
+
               let token = localStorage.getItem('token');
-
-              if (currUserRole !== 'STUDENT' || currUserRole !== 'TEACHER') {
-                  setError("You are not authorized to access these lectures.");
-                  setLoading(false);
-                  return;
-              }
-
-              const response = await fetch(`${import.meta.env.VITE_EDUSHARE_BACKEND_URL}/api/videos/${courseId}`, {
+              console.log('courseId-> '+ courseId)
+              const response = await fetch(`${import.meta.env.VITE_EDUSHARE_BACKEND_URL}/api/videos/allpercourse/${courseId}`, {
                   method: 'GET',
                   headers: {
                       'Authorization': `Bearer ${token}`,
@@ -53,11 +54,13 @@ const AllVideoLectures = () => {
               }
 
               const result = await response.json();
+              console.log('result.data -> '+result.data);
               if (result.data.length === 0) {
-                  setError("No videos available.");
-              } else {
-                  setVideos(result.data);
+                  throw new Error("No videos available.");
               }
+              setVideos(result.data);
+              //setSelectedVideo(result.data[0]);
+              console.log('Videos set successfully:', result.data);
           } catch (err) {
               setError(err.message);
           } finally {
@@ -66,9 +69,10 @@ const AllVideoLectures = () => {
       };
       fetchVideos();
   }, [courseId]);
+
     // Intially setting up the current videos
     useEffect(() => {
-        console.log(videos);
+        console.log('videos length->' + videos.length)
         if (videos.length > 0) {
             setSelectedVideo(videos[0]);
         }
@@ -102,9 +106,9 @@ const AllVideoLectures = () => {
                       {/* Video List */}
                       <div className="col-md-3 border-end py-2">
                           <ul className="list-group">
-                              {videos.map((video) => (
+                              {videos.map((video, index) => (
                                   <li
-                                      key={video.id}
+                                      key={index}
                                       className={`list-group-item ${selectedVideo.id === video.id ? "active" : ""}`}
                                       onClick={() => setSelectedVideo(video)}
                                       style={{cursor: "pointer"}}

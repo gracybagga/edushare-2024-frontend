@@ -15,7 +15,7 @@ import Edushare from "../../img/Edushare.jpg"
   const [experience, setExperience] = useState("");
   const [street, setStreet] = useState("");
   const [province, setProvince] = useState("");
-  const [country, setCountry] = useState("Canada");
+  const [country, setCountry] = useState("");
   const [zip, setZip] = useState("");
   const [errors, setErrors] = useState({});
   const [isLoading, setIsLoading] = useState(false);
@@ -41,6 +41,7 @@ import Edushare from "../../img/Edushare.jpg"
 
     if (!street.trim()) newErrors.street = 'Street is required';
     if (!province.trim()) newErrors.province = 'Province is required';
+    if (!country.trim()) newErrors.country = 'Country is required';
     if (!(/^[A-Za-z]\d[A-Za-z] \d[A-Za-z]\d$/).test(zip.trim())) newErrors.zip = 'Invalid ZIP code format';
 
     setErrors(newErrors);
@@ -94,7 +95,7 @@ import Edushare from "../../img/Edushare.jpg"
         throw new Error("Teacher Registration failed!");
       }
 
-      Swal.fire("Success", "Your application has been submitted successfully!", "success");
+      Swal.fire("Success", "Your has been successfully registered as our BELOVED Teacher! YAY!!", "success");
       setFirstName("");
       setLastName("");
       setEmail("");
@@ -106,7 +107,7 @@ import Edushare from "../../img/Edushare.jpg"
       setExperience("");
       setStreet("");
       setProvince("");
-      setCountry("Canada");
+      setCountry("");
       setZip("");
     } catch (error) {
       Swal.fire("Error", "An error occurred while submitting your application. Please try again.", "error");

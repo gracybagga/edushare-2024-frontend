@@ -84,7 +84,7 @@ const AllQuiz = () => {
           });
           return;
         }
-        if (currUserRole !== 'STUDENT' || currUserRole !== 'TEACHER') {
+        if (currUserRole !== 'STUDENT' && currUserRole !== 'TEACHER') {
           Swal.fire({
             icon: 'info',
             title: 'OOPS!',

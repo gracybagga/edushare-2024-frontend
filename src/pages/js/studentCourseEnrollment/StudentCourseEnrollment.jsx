@@ -33,6 +33,7 @@ const StudentCourseEnrollment = () => {
                 }
                 const data = await response.json();
                 setCourses(data.data);
+                console.log(courses)
             } catch (error) {
                 setError(error.message);
             } finally {
@@ -73,7 +74,7 @@ const StudentCourseEnrollment = () => {
 
             if (response.ok) {
                 // setCourses(courses.map(course =>
-                //     course.id === courseId ? { ...course, enrolled: true } : course
+                //     course._id === courseId ? { ...course, enrolled: true } : course
                 // ));
                 Swal.fire({
                     position: "top-end",
@@ -120,16 +121,16 @@ const StudentCourseEnrollment = () => {
                         </div>
                     </nav>
                     <div className={`container d-flex flex-column align-items-center py-5`}>
-                        <h2 className="fw-bold text-center mb-4">📚 Enroll in a Course</h2>
+                        <h2 className={`fw-bold text-center mb-4 ${isDark ? "text-light" : "text-dark"}`}>📚 Enroll in a Course</h2>
                         <div className="course-grid">
                             {courses.map(course => (
-                                <div key={course.id}
+                                <div key={course._id}
                                      className={`course-card p-4 rounded-4 shadow ${isDark ? "bg-secondary" : "bg-tertiary"}`}>
-                                    <img src={course.image} alt={course.title} className="course-image rounded mb-3"/>
-                                    <h4 className="fw-bold">{course.title}</h4>
+                                    <img src={course.image} alt={course.name} className="course-image rounded mb-3"/>
+                                    <h4 className="fw-bold">{course.name}</h4>
                                     <button
                                         className={`btn w-100 mt-3 fw-bold btn-primary rounded-pill`}
-                                        onClick={() => handleEnroll(course.id)}
+                                        onClick={() => handleEnroll(course._id)}
                                     >
                                         🚀 Enroll Now
                                     </button>

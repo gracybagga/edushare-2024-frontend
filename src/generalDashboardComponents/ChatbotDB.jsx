@@ -17,14 +17,14 @@ export default function ChatbotDB({ isVisible, onClose, theme }) {
     
         try {
             // Make a POST request to the backend using fetch
-            const response = await fetch(`${process.env.REACT_APP_EDUSHARE_BACKEND_URL}/chatbot`, {
+            const response = await fetch(`${import.meta.env.VITE_EDUSHARE_BACKEND_URL}/api/ai/chat`, {
                 method: 'POST',
                 headers: {
                     "Content-Type": "application/json",
                     "X-Requested-With": "XMLHttpRequest",
                     "Accept": "application/json",
                 },
-                body: JSON.stringify({ userMessage }),
+                body: JSON.stringify({ message : userMessage }),
                 credentials: "include", // Required for sending cookies
             });
     
@@ -33,10 +33,11 @@ export default function ChatbotDB({ isVisible, onClose, theme }) {
             }
     
             const data = await response.json();
+            console.log(data)
     
             if (data.success) {
                 // Add the bot's response to the chat
-                setMessages((prev) => [...prev, { type: 'bot', text: data.botMessage }]);
+                setMessages((prev) => [...prev, { type: 'bot', text: data.response }]);
             } else {
                 // Handle unexpected cases
                 setMessages((prev) => [

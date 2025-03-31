@@ -16,7 +16,7 @@ export default function RegisterPage() {
     phone: '',
     street: '',
     province: '',
-    country: 'Canada',
+    country: '',
     zip: '',
     password: '',
     confirmPassword: '',
@@ -42,6 +42,7 @@ export default function RegisterPage() {
     if (!phoneRegex.test(formData.phone.trim())) newErrors.phone = 'Phone number must be 10 digits';
     if (!formData.street.trim()) newErrors.street = 'Street is required';
     if (!formData.province.trim()) newErrors.province = 'Province is required';
+    if (!formData.country.trim()) newErrors.country = 'Country is required';
     if (!zipRegex.test(formData.zip.trim())) newErrors.zip = 'Invalid ZIP code format';
     if (!passwordRegex.test(formData.password.trim())) newErrors.password = 'Password must be 6-14 chars long, include at least 1 lowercase, 1 uppercase, 1 special char [!@#$&], and 1 digit';
     if (formData.password !== formData.confirmPassword.trim()) newErrors.confirmPassword = 'Passwords do not match';
@@ -124,7 +125,7 @@ export default function RegisterPage() {
         phone: '',
         street: '',
         province: '',
-        country: 'Canada',
+        country: '',
         zip: '',
         password: '',
         confirmPassword: '',
@@ -246,7 +247,7 @@ export default function RegisterPage() {
               </div>
               <div className="mb-2">
                 <label htmlFor="country" className="form-label fw-bold fs-4 mb-2">Country:</label>
-                <input type="text" className="form-control" id="country" placeholder='Canada' readOnly/>
+                <input type="text" className="form-control" id="country" placeholder='Canada'/>
               </div>
               <div className="mb-2">
               <label htmlFor="zip" className="form-label fw-bold fs-4 mb-2">Zip Code:</label>

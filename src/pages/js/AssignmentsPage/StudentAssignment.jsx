@@ -41,7 +41,7 @@ const StudentAssignment = () => {
         let currUserRole = localStorage.getItem('userRole');
         let token = localStorage.getItem('token');
 
-        if (currUserRole !== 'STUDENT' || currUserRole !== 'TEACHER') {
+        if (currUserRole !== 'STUDENT' && currUserRole !== 'TEACHER') {
           setError("You are not authorized to access these assignments.");
           setLoading(false);
           return;

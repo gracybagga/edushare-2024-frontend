@@ -19,7 +19,7 @@ const PopularCourses = ({ theme }) => {
 
     return (
         <div className={`card ${cardTheme} shadow`}>
-            <div className="card-body">
+            <div className="card-body">console.log(courses)
                 <h5 className="card-title mb-4">Popular Courses</h5>
                 <ul className="list-group">
                     {courses.map((course) => (

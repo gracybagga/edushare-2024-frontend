@@ -8,7 +8,7 @@ const AllLecture = () => {
     const location = useLocation();
     const theme = location.state?.theme || "light"; // Extract theme from location.state
     const lectureIdArray = location.state?.lectureIdArray || [];
-    const courseId = location.state?.courseId || '';
+    const courseId = location.state?.courseId || 'hello';
   
     // Combined Lecture Data (ID, Title, and Content in one structure)
     const [lectures, setLectures] = useState([]);
@@ -34,13 +34,13 @@ const AllLecture = () => {
                 let currUserRole = localStorage.getItem('userRole');
                 let token = localStorage.getItem('token');
 
-                if (currUserRole !== 'STUDENT' || currUserRole !== 'TEACHER') {
+                if (currUserRole !== 'STUDENT' && currUserRole !== 'TEACHER') {
                     setError("You are not authorized to access these lectures.");
                     setLoading(false);
                     return;
                 }
 
-                const response = await fetch(`${import.meta.env.VITE_EDUSHARE_BACKEND_URL}/api/lectures/${courseId}`, {
+                const response = await fetch(`${import.meta.env.VITE_EDUSHARE_BACKEND_URL}/api/lectures/alllecturespercourse/${courseId}`, {
                     method: 'GET',
                     headers: {
                         'Authorization': `Bearer ${token}`,

@@ -33,6 +33,7 @@ const TeacherCourseEnrollment = () => {
                 }
                 const data = await response.json();
                 setCourses(data.data);
+                console.log(courses)
             } catch (error) {
                 setError(error.message);
             } finally {
@@ -44,13 +45,13 @@ const TeacherCourseEnrollment = () => {
     }, []);
 
     const handleEnroll = async (courseId) => {
-        const studentId = localStorage.getItem("studentId");
-        if (!studentId) {
+        const teacherId = localStorage.getItem("teacherId");
+        if (!teacherId) {
             Swal.fire({
                 position: "top-end",
                 icon: "error",
                 title: "Oops...",
-                text: "Student ID not found. Please try again later after logging in properly!",
+                text: "Teacher ID not found. Please try again later after logging in properly!",
                 showConfirmButton: false,
                 timer: 1500
             });
@@ -66,7 +67,7 @@ const TeacherCourseEnrollment = () => {
                     "X-Requested-With": "XMLHttpRequest",
                     "Accept": "application/json",
                 },
-                body: JSON.stringify({ studentId, courseId }),
+                body: JSON.stringify({ teacherId, courseId }),
             });
 
             const result = await response.json();
@@ -120,16 +121,16 @@ const TeacherCourseEnrollment = () => {
                         </div>
                     </nav>
                     <div className={`container d-flex flex-column align-items-center py-5`}>
-                        <h2 className="fw-bold text-center mb-4">📚 Enroll in a Course</h2>
+                        <h2 className={`fw-bold text-center mb-4 ${isDark ? "text-light" : "text-dark"}`}>📚 Enroll in a Course</h2>
                         <div className="course-grid">
                             {courses.map(course => (
-                                <div key={course.id}
+                                <div key={course._id}
                                      className={`course-card p-4 rounded-4 shadow ${isDark ? "bg-secondary" : "bg-tertiary"}`}>
-                                    <img src={course.image} alt={course.title} className="course-image rounded mb-3"/>
-                                    <h4 className="fw-bold">{course.title}</h4>
+                                    <img src={course.image} alt={course.name} className="course-image rounded mb-3"/>
+                                    <h4 className="fw-bold">{course.name}</h4>
                                     <button
                                         className={`btn w-100 mt-3 fw-bold btn-primary rounded-pill`}
-                                        onClick={() => handleEnroll(course.id)}
+                                        onClick={() => handleEnroll(course._id)}
                                     >
                                         🚀 Enroll Now
                                     </button>
