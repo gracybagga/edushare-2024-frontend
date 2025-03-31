@@ -68,7 +68,10 @@ export default function RegisterPage() {
     
   const handleRegisteration = async (e) => {
     e.preventDefault();
+    console.log('Registration process started...');
+
     if (!validateFields()) {
+      console.warn('Form validation failed!');
       Swal.fire({
         position: "top-end",
         icon: "error",
@@ -78,8 +81,8 @@ export default function RegisterPage() {
         timer: 1500
       });
       return
-    };
-    console.log('Registering in...');
+    }
+    console.log('Form validation passed. Preparing payload...');
     const payload = {
       firstName: formData.firstName.trim(),
       lastName: formData.lastName.trim(),
@@ -94,9 +97,12 @@ export default function RegisterPage() {
       gender: formData.gender.trim(),
       dateOfBirth: formData.dateOfBirth
     }
+    console.log('Payload:', payload);
     try {
       setIsLoading(true);
-      const response = await fetch(`${process.env.VITE_EDUSHARE_BACKEND_URL}/api/auth/register/student`, {
+      const url = `${import.meta.env.VITE_EDUSHARE_BACKEND_URL}/api/auth/register/student`;
+      console.log('Sending request to:', url);
+      const response = await fetch(`${import.meta.env.VITE_EDUSHARE_BACKEND_URL}/api/auth/register/student`, {
         method: 'POST',
         headers: { 
           "Content-Type": "application/json",
@@ -105,10 +111,12 @@ export default function RegisterPage() {
         },
         body: JSON.stringify(payload)
       });
+      console.log('Response status:', response.status);
       if (!response.ok) {
         throw new Error('Registration failed');
       }
       const result = await response.json();
+      console.log('Response data:', result);
       setFormData({
         firstName: '',
         lastName: '',
@@ -143,6 +151,7 @@ export default function RegisterPage() {
       });
     } finally {
       setIsLoading(false);
+      console.log('Registration process ended.');
     }
   };
 
@@ -178,22 +187,22 @@ export default function RegisterPage() {
               <div className="mb-2">
                 <label htmlFor="firstName" className="form-label fw-bold fs-4 mb-2">First name:</label>
                 <input type="text" className={`form-control`} id="firstName" value={formData.firstName} onChange={handleInputChange} placeholder="John" />
-                <div className="invalid-feedback">{errors.firstName}</div>
+                <div style={{color:'red', fontSize:'small'}}>{errors.firstName}</div>
               </div>
               <div className="mb-2">
               <label htmlFor="lastName" className="form-label fw-bold fs-4 mb-2">Last name:</label>
                 <input type="text" className={`form-control`} id="lastName" value={formData.lastName} onChange={handleInputChange} placeholder="Smith" />
-                <div className="invalid-feedback">{errors.lastName}</div>
+                <div style={{color:'red', fontSize:'small'}}>{errors.lastName}</div>
               </div>
               <div className="mb-2">
               <label htmlFor="email" className="form-label fw-bold fs-4 mb-1">Email address</label>
                 <input type="email" className={`form-control`} id="email" value={formData.email} onChange={handleInputChange} placeholder="abc@email.com" />
-                <div className="invalid-feedback">{errors.email}</div>
+                <div style={{color:'red', fontSize:'small'}}>{errors.email}</div>
               </div>
               <div className="mb-2">
               <label htmlFor="phone" className="form-label fw-bold fs-4 mb-2">Phone Number:</label>
                 <input type="text" className={`form-control`} id="phone" value={formData.phone} onChange={handleInputChange} placeholder="3063061234" />
-                <div className="invalid-feedback">{errors.phone}</div>
+                <div style={{color:'red', fontSize:'small'}}>{errors.phone}</div>
               </div>
               <div className="mb-2">
                 <label htmlFor="gender" className="form-label fw-bold fs-4 mb-2">Gender:</label>
@@ -203,17 +212,17 @@ export default function RegisterPage() {
                   <option value="Female">Female</option>
                   <option value="Other">Other</option>
                 </select>
-                <div className="invalid-feedback">{errors.gender}</div>
+                <div style={{color:'red', fontSize:'small'}}>{errors.gender}</div>
               </div>
               <div className="mb-2">
                 <label htmlFor="dateOfBirth" className="form-label fw-bold fs-4 mb-2">Date of Birth:</label>
                 <input type="date" className={`form-control`} id="dateOfBirth" value={formData.dateOfBirth} onChange={handleInputChange} max={new Date().toISOString().split('T')[0]} />
-                <div className="invalid-feedback">{errors.dateOfBirth}</div>
+                <div style={{color:'red', fontSize:'small'}}>{errors.dateOfBirth}</div>
               </div>
               <div className="mb-2">
               <label htmlFor="street" className="form-label fw-bold fs-4 mb-2">Street:</label>
                 <input type="text" className={`form-control`} id="street" value={formData.address} onChange={handleInputChange} placeholder="123 Main St" />
-                <div className="invalid-feedback">{errors.address}</div>
+                <div style={{color:'red', fontSize:'small'}}>{errors.address}</div>
               </div>
               <div className="mb-2">
               <label htmlFor="province" className="form-label fw-bold fs-4 mb-2">Province</label>
@@ -233,7 +242,7 @@ export default function RegisterPage() {
                   <option value="NU">Nunavut</option>
                   <option value="YK">Yukon</option>
                 </select>
-                <div className="invalid-feedback">{errors.province}</div>
+                <div style={{color:'red', fontSize:'small'}}>{errors.province}</div>
               </div>
               <div className="mb-2">
                 <label htmlFor="country" className="form-label fw-bold fs-4 mb-2">Country:</label>
@@ -242,18 +251,18 @@ export default function RegisterPage() {
               <div className="mb-2">
               <label htmlFor="zip" className="form-label fw-bold fs-4 mb-2">Zip Code:</label>
                 <input type="text" className={`form-control`} id="zip" value={formData.zip} onChange={handleInputChange} placeholder="A1A 1A1" />
-                <div className="invalid-feedback">{errors.zip}</div>
+                <div style={{color:'red', fontSize:'small'}}>{errors.zip}</div>
               </div>
               <div className="row mb-2">
                 <div className="col-md-6">
                 <label htmlFor="password" className="form-label fw-bold fs-4">Password</label>
                   <input type="password" className={`form-control`} id="password" value={formData.password} onChange={handleInputChange} />
-                  <div className="invalid-feedback">{errors.password}</div>
+                  <div style={{color:'red', fontSize:'small'}}>{errors.password}</div>
                 </div>
                 <div className="col-md-6">
                 <label htmlFor="confirmPassword" className="form-label fw-bold fs-4">Confirm Password</label>
                   <input type="password" className={`form-control`} id="confirmPassword" value={formData.confirmPassword} onChange={handleInputChange} />
-                  <div className="invalid-feedback">{errors.confirmPassword}</div>
+                  <div style={{color:'red', fontSize:'small'}}>{errors.confirmPassword}</div>
                 </div>
               </div>
               <div className="row mb-1">

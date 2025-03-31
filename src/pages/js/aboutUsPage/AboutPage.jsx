@@ -22,7 +22,7 @@ export default function AboutPage() {
       <Footer/> */}
 
       <Navbar/>
-      <div className="container custom-bg-container">
+      <div className="custom-bg-container">
         <AboutHightlightSection/>
         <StorySection/>
         <TeamSection/>

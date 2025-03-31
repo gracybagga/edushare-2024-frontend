@@ -40,7 +40,7 @@ const AllQuiz = () => {
           return;
         }
 
-        const response = await fetch(`${process.env.VITE_EDUSHARE_BACKEND_URL}/api/quizzes/quizbycourseid/${courseId}`, {
+        const response = await fetch(`${import.meta.env.VITE_EDUSHARE_BACKEND_URL}/api/quizzes/quizbycourseid/${courseId}`, {
           method: 'GET',
           headers: {
             'Authorization': `Bearer ${token}`,
@@ -97,7 +97,7 @@ const AllQuiz = () => {
         try {
           setLoading(true);
           setError(null);
-          const response = await fetch(`${process.env.REACT_APP_EDUSHARE_BACKEND_URL}/api/content/quiz/`, {
+          const response = await fetch(`${import.meta.env.REACT_APP_EDUSHARE_BACKEND_URL}/api/content/quiz/`, {
             method: "POST",
             headers: {
               'Authorization': `Bearer ${token}`,

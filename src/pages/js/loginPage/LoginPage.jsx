@@ -86,7 +86,7 @@ export default function LoginPage() {
       try {
         console.log('starting fetch block')
         setIsLoading(true);
-        const url = `${process.env.VITE_EDUSHARE_BACKEND_URL}/api/auth/login`;
+        const url = `${import.meta.env.VITE_EDUSHARE_BACKEND_URL}/api/auth/login`;
         console.log('url: '+url);
         // prepare the payload and call backend
         const response = await fetch(url, {

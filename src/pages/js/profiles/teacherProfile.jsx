@@ -1,6 +1,3 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import "../css/Header.css";
 import React, { useState, useEffect } from 'react';
 import {useNavigate, useParams} from 'react-router-dom';
 import LoadingAndErrorComponent from "../../../GeneralComponents/js/LoadingAndErrorComponent"; // Ensure this CSS file replicates the <style> from the HTML
@@ -19,7 +16,7 @@ function TeacherProfile() {
         const fetchProfile = async () => {
             try {
                 const response = await fetch(
-                    `${process.env.VITE_EDUSHARE_BACKEND_URL}/api/teacher/profile/${userId}`, {
+                    `${import.meta.env.VITE_EDUSHARE_BACKEND_URL}/api/teacher/profile/${userId}`, {
                         method: 'GET',
                         headers: {
                             'Authorization': `Bearer ${token}`,

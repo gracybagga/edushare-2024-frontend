@@ -34,7 +34,7 @@ export default function TeacherDashboard() {
 
             try {
                 if(userRole==='TEACHER') {
-                    const teacherResponse = await fetch(`${process.env.VITE_EDUSHARE_BACKEND_URL}/api/teacher/dashboard/${userId}`, {
+                    const teacherResponse = await fetch(`${import.meta.env.VITE_EDUSHARE_BACKEND_URL}/api/teacher/dashboard/${userId}`, {
                         method: 'GET',
                         headers: {
                             'Authorization': `Bearer ${token}`,

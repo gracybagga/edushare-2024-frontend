@@ -27,7 +27,7 @@ import NewQuiz from "./pages/js/quizPage/NewQuiz";
 import StudentCourseEnrollment from "./pages/js/studentCourseEnrollment/StudentCourseEnrollment";
 import StudentProfile from "./pages/js/profiles/studentProfile";
 import TeacherProfile from "./pages/js/profiles/teacherProfile";
-import TeacherCourseEnrollment from "./pages/js/studentCourseEnrollment/TeacherCourseEnrollment";
+import TeacherCourseEnrollment from "./pages/js/teacherCourseEnrollment/TeacherCourseEnrollment";
 
 // This component is responsible for rendering the Navbar and Footer conditionally, as well as the routes
 function MainApp() {

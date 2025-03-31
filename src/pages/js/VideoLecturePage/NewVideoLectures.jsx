@@ -88,7 +88,7 @@ const NewVideovideos = () => {
                 setIsLoading(true);
                 let token = localStorage.getItem('token');
 
-                const url = `${process.env.VITE_EDUSHARE_BACKEND_URL}/api/videos/`;
+                const url = `${import.meta.env.VITE_EDUSHARE_BACKEND_URL}/api/videos/`;
                 // prepare the payload and call backend
                 const response = await fetch(url, {
                     method: 'POST',

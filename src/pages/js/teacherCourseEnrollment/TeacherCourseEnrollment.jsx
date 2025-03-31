@@ -19,7 +19,7 @@ const TeacherCourseEnrollment = () => {
         const fetchCourses = async () => {
             try {
 
-                const response = await fetch(`${process.env.VITE_EDUSHARE_BACKEND_URL}/api/enroll/allcourses`, {
+                const response = await fetch(`${import.meta.env.VITE_EDUSHARE_BACKEND_URL}/api/enroll/allcourses`, {
                     method: 'GET',
                     headers: {
                         'Authorization': `Bearer ${token}`,
@@ -58,7 +58,7 @@ const TeacherCourseEnrollment = () => {
         }
 
         try {
-            const response = await fetch(`${process.env.VITE_EDUSHARE_BACKEND_URL}/api/enroll/teacher`, { // Replace with actual API
+            const response = await fetch(`${import.meta.env.VITE_EDUSHARE_BACKEND_URL}/api/enroll/teacher`, { // Replace with actual API
                 method: "POST",
                 headers: {
                     'Authorization': `Bearer ${token}`,

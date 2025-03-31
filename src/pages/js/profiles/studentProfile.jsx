@@ -16,7 +16,7 @@ function StudentProfile() {
         const fetchProfile = async () => {
             try {
                 const response = await fetch(
-                    `${process.env.VITE_EDUSHARE_BACKEND_URL}/api/student/profile/${userId}`, {
+                    `${import.meta.env.VITE_EDUSHARE_BACKEND_URL}/api/student/profile/${userId}`, {
                         method: 'GET',
                         headers: {
                             'Authorization': `Bearer ${token}`,

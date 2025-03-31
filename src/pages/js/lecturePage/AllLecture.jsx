@@ -40,7 +40,7 @@ const AllLecture = () => {
                     return;
                 }
 
-                const response = await fetch(`${process.env.VITE_EDUSHARE_BACKEND_URL}/api/lectures/${courseId}`, {
+                const response = await fetch(`${import.meta.env.VITE_EDUSHARE_BACKEND_URL}/api/lectures/${courseId}`, {
                     method: 'GET',
                     headers: {
                         'Authorization': `Bearer ${token}`,
@@ -147,7 +147,7 @@ function LectureContent({isDark, currentLecture}) {
           setLoading(true);
           setError(null);
           let token = localStorage.getItem('token');
-          const response = await fetch(`${process.env.REACT_APP_EDUSHARE_BACKEND_URL}/api/content/lectures/`, {
+          const response = await fetch(`${import.meta.env.REACT_APP_EDUSHARE_BACKEND_URL}/api/content/lectures/`, {
             method: 'POST',
             headers: {
               'Authorization': `Bearer ${token}`,

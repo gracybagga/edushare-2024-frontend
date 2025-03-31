@@ -38,7 +38,7 @@ const AllVideoLectures = () => {
                   return;
               }
 
-              const response = await fetch(`${process.env.VITE_EDUSHARE_BACKEND_URL}/api/videos/${courseId}`, {
+              const response = await fetch(`${import.meta.env.VITE_EDUSHARE_BACKEND_URL}/api/videos/${courseId}`, {
                   method: 'GET',
                   headers: {
                       'Authorization': `Bearer ${token}`,

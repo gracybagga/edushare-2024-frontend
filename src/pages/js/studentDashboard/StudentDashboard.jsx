@@ -34,7 +34,7 @@ export default function StudentDashboard() {
 
             try {
                 if(userRole==='STUDENT') {
-                    const studentResponse = await fetch(`${process.env.VITE_EDUSHARE_BACKEND_URL}/api/student/dashboard/${userId}`, {
+                    const studentResponse = await fetch(`${import.meta.env.VITE_EDUSHARE_BACKEND_URL}/api/student/dashboard/${userId}`, {
                         method: 'GET',
                             headers: {
                             'Authorization': `Bearer ${token}`,

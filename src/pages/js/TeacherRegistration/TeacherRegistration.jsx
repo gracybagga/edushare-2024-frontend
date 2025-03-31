@@ -80,7 +80,7 @@ import Edushare from "../../img/Edushare.jpg"
 
     try {
       setIsLoading(true);
-      const response = await fetch(`${process.env.VITE_EDUSHARE_BACKEND_URL}/api/auth/register/teacher`, {
+      const response = await fetch(`${import.meta.env.VITE_EDUSHARE_BACKEND_URL}/api/auth/register/teacher`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

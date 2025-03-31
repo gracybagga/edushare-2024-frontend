@@ -93,7 +93,7 @@ const NewLecture = () => {
                 setIsLoading(true);
                 let token = localStorage.getItem('token');
 
-                const url = `${process.env.VITE_EDUSHARE_BACKEND_URL}/api/lectures/`;
+                const url = `${import.meta.env.VITE_EDUSHARE_BACKEND_URL}/api/lectures/`;
                 // prepare the payload and call backend
                 const response = await fetch(url, {
                     method: 'POST',

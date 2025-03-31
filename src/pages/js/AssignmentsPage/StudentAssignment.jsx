@@ -47,7 +47,7 @@ const StudentAssignment = () => {
           return;
         }
 
-        const response = await fetch(`${process.env.VITE_EDUSHARE_BACKEND_URL}/api/assignments/${courseId}`, {
+        const response = await fetch(`${import.meta.env.VITE_EDUSHARE_BACKEND_URL}/api/assignments/${courseId}`, {
           method: 'GET',
           headers: {
             'Authorization': `Bearer ${token}`,
@@ -138,8 +138,6 @@ const StudentAssignment = () => {
 };
 
 function AssignmentContent({isDark, content}) {
-  import React from 'react';
-  import Swal from 'sweetalert2';
   const handleFeatureAlert = () => {
     Swal.fire({
       icon: 'info',
