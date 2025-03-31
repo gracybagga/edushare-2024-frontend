@@ -27,6 +27,7 @@ import NewQuiz from "./pages/js/quizPage/NewQuiz";
 import StudentCourseEnrollment from "./pages/js/studentCourseEnrollment/StudentCourseEnrollment";
 import StudentProfile from "./pages/js/profiles/studentProfile";
 import TeacherProfile from "./pages/js/profiles/teacherProfile";
+import TeacherCourseEnrollment from "./pages/js/studentCourseEnrollment/TeacherCourseEnrollment";
 
 // This component is responsible for rendering the Navbar and Footer conditionally, as well as the routes
 function MainApp() {
@@ -59,6 +60,7 @@ function MainApp() {
         <Route path = "/teacher-course-videos-new" element = {<NewVideoLectures/>}/>
         <Route path = "/teacher-course-quizzes-new" element = {<NewQuiz/>}/>
         <Route path = "/teacher-profile" element = {<TeacherProfile/>}/>
+        <Route path = "/teacher-course-enrollment" element = {<TeacherCourseEnrollment/>}/>
       </Routes>
     </div>
   );

@@ -5,7 +5,7 @@ import "../../css/StudentCourseEnrollment.css"; // Custom styles for animations
 import LoadingAndErrorComponent from "../../../GeneralComponents/js/LoadingAndErrorComponent";
 import Swal from "sweetalert2";
 
-const StudentCourseEnrollment = () => {
+const TeacherCourseEnrollment = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const theme = location.state?.theme || "light"; // Extract theme from location.state
@@ -58,7 +58,7 @@ const StudentCourseEnrollment = () => {
         }
 
         try {
-            const response = await fetch(`${process.env.VITE_EDUSHARE_BACKEND_URL}/api/enroll/student`, { // Replace with actual API
+            const response = await fetch(`${process.env.VITE_EDUSHARE_BACKEND_URL}/api/enroll/teacher`, { // Replace with actual API
                 method: "POST",
                 headers: {
                     'Authorization': `Bearer ${token}`,
@@ -137,7 +137,7 @@ const StudentCourseEnrollment = () => {
                             ))}
                         </div>
                         <button className="btn btn-dark rounded-pill mt-4 px-4 py-2 fw-bold"
-                                onClick={() => navigate('/student-dashboard')}>← Back
+                                onClick={() => navigate('/teacher-dashboard')}>← Back
                         </button>
                     </div>
                 </div>
@@ -146,7 +146,7 @@ const StudentCourseEnrollment = () => {
     );
 };
 
-export default StudentCourseEnrollment;
+export default TeacherCourseEnrollment;
 
 /*
 * const [courses, setCourses] = useState([

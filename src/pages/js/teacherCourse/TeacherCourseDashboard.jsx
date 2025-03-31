@@ -31,7 +31,7 @@ const TeacherCourseDashboard = () => {
             let token = localStorage.getItem('token');
             try {
                 if(currUserRole==='TEACHER') {
-                    const response = await fetch(`${process.env.VITE_EDUSHARE_BACKEND_URL}/courses/${currCourseId}`, {
+                    const response = await fetch(`${process.env.VITE_EDUSHARE_BACKEND_URL}/api/courses/${currCourseId}`, {
                         method: 'GET',
                         headers: {
                             'Authorization': `Bearer ${token}`,
