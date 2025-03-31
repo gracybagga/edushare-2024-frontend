@@ -15,9 +15,7 @@ export default function StudentDashboard() {
     const [isChatbotVisible, setIsChatbotVisible] = useState(false);
     const [theme, setTheme] = useState("light");
     const [userName, setUserName] = useState(localStorage.getItem("fullName"));
-    
     const [enrolledCourses, setEnrolledCourses] = useState([]);
-
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 

@@ -50,7 +50,7 @@ const RecentlyEnrolledCourses = ({ courses, theme }) => {
                             ))}
                         </ul>
                     ) : (
-                        <p className="text-muted">No courses selected yet.</p>
+                        <p className="text-muted">No courses in your account yet.</p>
                     )}
                 </div>
             </div>

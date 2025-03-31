@@ -27,7 +27,7 @@ function StudentProfile() {
                     }
                 );
                 if (!response.ok) {
-                    throw new Error("Network response was not ok");
+                    throw new Error("Student Profile could not be retrieved from the server!");
                 }
                 const data = await response.json();
                 setProfileData(data.data);

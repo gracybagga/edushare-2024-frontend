@@ -26,6 +26,7 @@ import NewVideoLectures from "./pages/js/VideoLecturePage/NewVideoLectures";
 import NewQuiz from "./pages/js/quizPage/NewQuiz";
 import StudentCourseEnrollment from "./pages/js/studentCourseEnrollment/StudentCourseEnrollment";
 import StudentProfile from "./pages/js/profiles/studentProfile";
+import TeacherProfile from "./pages/js/profiles/teacherProfile";
 
 // This component is responsible for rendering the Navbar and Footer conditionally, as well as the routes
 function MainApp() {
@@ -41,12 +42,14 @@ function MainApp() {
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path = "/student-dashboard" element = {<StudentDashboard/>}/>
-        <Route path = "/teacher-dashboard" element = {<TeacherDashboard/>}/>
         <Route path = "/student-course-dashboard" element = {<StudentCourseDashboard/>}/>
         <Route path = "/student-course-lectures" element = {<AllLecture/>}/>
         <Route path = "/student-course-videos" element = {<AllVideoLectures/>}/>
         <Route path = "/student-course-assignments" element = {<StudentAssignment/>}/>
         <Route path = "/student-course-quizzes" element = {<AllQuiz/>}/>
+        <Route path = "/student-course-enrollment" element = {<StudentCourseEnrollment/>}/>
+        <Route path = "/student-profile" element = {<StudentProfile/>}/>
+        <Route path = "/teacher-dashboard" element = {<TeacherDashboard/>}/>
         <Route path = "/teacher-course-dashboard" element = {<TeacherCourseDashboard/>}/>
         <Route path = "/teacher-course-lectures" element = {<AllLecture/>}/>
         <Route path = "/teacher-course-videos" element = {<AllVideoLectures/>}/>
@@ -55,9 +58,7 @@ function MainApp() {
         <Route path = "/teacher-course-lectures-new" element = {<NewLecture/>}/>
         <Route path = "/teacher-course-videos-new" element = {<NewVideoLectures/>}/>
         <Route path = "/teacher-course-quizzes-new" element = {<NewQuiz/>}/>
-        <Route path = "/student-course-enrollment" element = {<StudentCourseEnrollment/>}/>
-        <Route path = "/student-profile" element = {<StudentProfile/>}/>
-
+        <Route path = "/teacher-profile" element = {<TeacherProfile/>}/>
       </Routes>
     </div>
   );
