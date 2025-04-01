@@ -11,6 +11,7 @@ import Mission from "./pages/js/missionPage/Mission";
 import CourseList from "./pages/js/couseList/CourseList";
 import RegisterPage from "./pages/js/registerPage/RegisterPage";
 import LoginPage from "./pages/js/loginPage/LoginPage";
+import ForgotPasswordPage from "./pages/js/forgotPasswordPage/ForgotPasswordPage";
 import TeacherRegistration from "./pages/js/TeacherRegistration/TeacherRegistration";
 import StudentDashboard from "./pages/js/studentDashboard/StudentDashboard"
 import TeacherDashboard from "./pages/js/teacherDashboard/TeacherDashboard";
@@ -42,6 +43,7 @@ function MainApp() {
         <Route path="/become-teacher" element ={<TeacherRegistration/>}/>
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/reset/password" element={<ForgotPasswordPage />} />
         <Route path = "/student-dashboard" element = {<StudentDashboard/>}/>
         <Route path = "/student-course-dashboard" element = {<StudentCourseDashboard/>}/>
         <Route path = "/student-course-lectures" element = {<AllLecture/>}/>

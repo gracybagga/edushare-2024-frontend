@@ -141,7 +141,7 @@ const NewVideovideos = () => {
     return (
         <div className="vh-100" style={{ background: backgroundStyle, overflowX: "hidden", overflowY: "hidden"  }}>
             {/* Navbar */}
-            <nav className={`navbar navbar-expand-lg ${isDark ? "bg-dark navbar-dark" : "bg-light navbar-light"} shadow`}>
+            <nav className={`navbar navbar-expand-lg ${!isDark ? "bg-dark navbar-dark" : "bg-light navbar-light"} shadow`}>
                 <div className="container-fluid">
                 <img src={scholarship} alt="logo" style={{ maxHeight: "35px" }} />
                 <span className="navbar-brand fw-bold">EduShare</span>

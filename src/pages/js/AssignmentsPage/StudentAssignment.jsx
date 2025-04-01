@@ -47,7 +47,7 @@ const StudentAssignment = () => {
           return;
         }
 
-        const response = await fetch(`${import.meta.env.VITE_EDUSHARE_BACKEND_URL}/api/assignments/${courseId}`, {
+        const response = await fetch(`${import.meta.env.VITE_EDUSHARE_BACKEND_URL}/api/assignments/percourse/${courseId}`, {
           method: 'GET',
           headers: {
             'Authorization': `Bearer ${token}`,
@@ -66,6 +66,8 @@ const StudentAssignment = () => {
           setError("No assignments available.");
         } else {
           setAssignments(result.data);
+          setSelectedAssignment(result.data[0]);
+          console.log(result.data);
         }
       } catch (err) {
         setError(err.message);
@@ -76,13 +78,13 @@ const StudentAssignment = () => {
     fetchAssignments();
   }, [courseId]);
 
-  // Intially setting up the current videos
-  useEffect(() => {
-    console.log(assignments);
-    if (assignments.length > 0) {
-      setSelectedAssignment(assignments[0]);
-    }
-  }, [assignments]);
+  // // Intially setting up the current videos
+  // useEffect(() => {
+  //   console.log(assignments);
+  //   if (assignments.length > 0) {
+  //     setSelectedAssignment(assignments[0]);
+  //   }
+  // }, [assignments]);
 
   const isDark = theme === "dark";
   const backgroundStyle = isDark
@@ -97,11 +99,11 @@ const StudentAssignment = () => {
             <div className="vh-100" style={{background: backgroundStyle, overflowX: 'hidden'}}>
               {/* Navbar */}
               <nav
-                  className={`navbar navbar-expand-lg ${theme === "dark" ? "bg-dark navbar-dark" : "bg-light navbar-light"} shadow`}>
+                  className={`navbar navbar-expand-lg ${theme === "light" ? "bg-dark navbar-dark" : "bg-light navbar-light"} shadow`}>
                 <div className="container-fluid">
                   <img src={scholarship} alt='logo' style={{maxHeight: '35px'}}/>
                   <span className="navbar-brand fw-bold">EduShare</span>
-                  <button className="btn btn-outline-primary" onClick={() => navigate('/student-course-dashboard')}>
+                  <button className="btn btn-primary rounded-pill" onClick={() => navigate('/student-course-dashboard', { state: { courseId }})}>
                     ← Course
                   </button>
                 </div>
@@ -112,8 +114,8 @@ const StudentAssignment = () => {
                   <ul className="list-group">
                     {assignments.map((assignment) => (
                         <li
-                            key={assignment.id}
-                            className={`list-group-item ${selectedAssignment && selectedAssignment.id === assignment.id ? "active" : ""}`}
+                            key={assignment._id}
+                            className={`list-group-item ${selectedAssignment._id === assignment._id ? "active" : ""}`}
                             onClick={() => {
                               setSelectedAssignment(assignment);
                             }}

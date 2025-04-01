@@ -46,8 +46,8 @@ export default function LoginPage() {
 
     // Validate username
     if (!username.trim()) {
-      console.log('username not provided')
-      setUsernameError("Username is required.");
+      console.log('Email not provided')
+      setUsernameError("Email is required.");
       isValid = false;
     }
 
@@ -59,8 +59,8 @@ export default function LoginPage() {
     }
 
     if(!usernameRegex.test(username.trim())) {
-      console.log('username did not pass regex')
-      setUsernameError('Username is required.');
+      console.log('Email did not pass regex')
+      setUsernameError('Email is required.');
       isValid = false;
     }
 
@@ -184,58 +184,59 @@ export default function LoginPage() {
             <form onSubmit={handleLogin} noValidate>
               <div className="mb-2">
                 <label htmlFor="loginUsername" className="form-label fw-bold fs-4 mb-3">Email</label>
-                <input 
-                  type="text" 
-                  className="form-control" 
-                  id="loginUsername" 
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
-                  placeholder="Enter your username"
+                <input
+                    type="text"
+                    className="form-control"
+                    id="loginUsername"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                    placeholder="Enter your username"
                 />
-                <div style={{color:'red', fontSize:'small'}}>{usernameError}</div>
+                <div style={{color: 'red', fontSize: 'small'}}>{usernameError}</div>
               </div>
               <div className="mb-2">
                 <label htmlFor="loginPassword" className="form-label fw-bold fs-4">Password</label>
-                <input 
-                  type="password" 
-                  className="form-control" 
-                  id="loginPassword" 
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  placeholder="Enter your password"
+                <input
+                    type="password"
+                    className="form-control"
+                    id="loginPassword"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    placeholder="Enter your password"
                 />
-                <div style={{color:'red', fontSize:'small'}}>{PasswordError}</div>
+                <div style={{color: 'red', fontSize: 'small'}}>{PasswordError}</div>
               </div>
-              <div className="mb-2 form-check" style={{textAlign:'left'}}>
+              <div className="mb-2 form-check" style={{textAlign: 'left'}}>
                 <input type="checkbox" className="form-check-input" id="loginCheckbox" onClick={handleFeatureAlert}/>
                 <label className="form-check-label" htmlFor="loginCheckbox">Remember Me</label>
               </div>
-              <div className="mb-2" style={{textAlign:'left'}}>
-                <Link className="small" to="#" onClick={handleFeatureAlert}>Forgot Password?</Link>
-              </div>
-              <div className="row mb-1">
-                <div className="col-md-6">
-                  <button type="submit" className="btn btn-primary w-100 mt-2">
-                    {isLoading ? 
-                      <div className="spinner-border" role="status">
-                        <span className="visually-hidden">Authenticating...</span>
-                      </div> 
-                    : "Login"}
-                  </button>
-                </div>
-                <div className="col-md-6">
-                  <button className="btn btn-dark w-100 mt-2">
-                    <Link to='/' className='text-light'>
-                      <i className="bi bi-house-fill me-2"></i>Home
-                    </Link>
-                  </button>
-                </div>
+              <div className="mb-2" style={{textAlign: 'left'}}>
+                <Link className="small" to="/reset/password">Forgot Password?</Link>
               </div>
             </form>
+            <div className="row mb-1">
+              <div className="col-md-6">
+                <button className="btn btn-primary w-100 mt-2" onClick={handleLogin}>
+                  {isLoading ?
+                      <div className="spinner-border" role="status">
+                        <span className="visually-hidden">Authenticating...</span>
+                      </div>
+                      : "Login"}
+                </button>
+              </div>
+              <div className="col-md-6">
+                <button className="btn btn-dark w-100 mt-2">
+                  <Link to='/' className='text-light'>
+                    <i className="bi bi-house-fill me-2"></i>Home
+                  </Link>
+                </button>
+              </div>
+            </div>
           </div>
         </div>
         {/* right col */}
-        <div className="col-md-6 p-3 bg-transparent border-start d-flex flex-column justify-content-center align-items-center">
+        <div
+            className="col-md-6 p-3 bg-transparent border-start d-flex flex-column justify-content-center align-items-center">
           <div className="text-center mb-2">
             <h4 className=" fw-bold fs-3 mb-3">Need an account? Sign up!</h4>
             <button type="button" className="btn btn-primary w-75 mb-2 rounded-pill" onClick={handleRegisterRedirect}>

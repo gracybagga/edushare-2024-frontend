@@ -7,6 +7,7 @@ import ClockCardCourse from "../../../generalDashboardComponents/ClockCardCourse
 import "../../css/studentCourseDashboard.css";
 import scholarship from "../../img/scholarship.png";
 import LoadingAndErrorComponent from "../../../GeneralComponents/js/LoadingAndErrorComponent";
+import Swal from "sweetalert2";
 
 const StudentCourseDashboard = () => {
     const navigate = useNavigate();
@@ -100,7 +101,7 @@ const StudentCourseDashboard = () => {
                                             <div className="card-body">
                                                 <h5 className="card-title fw-bold">📚 Lecture Notes</h5>
                                                 <p className="card-text">Read engaging lecture notes.</p>
-                                                <p className="text-muted">Total 5 Lecture notes</p>
+                                                <p className="text-muted">Total {course.lectures.length} Lecture notes</p>
                                                 <Link to='/student-course-lectures' state={{theme: theme, lectureIdArray:course.lectures, courseId:courseId}}>
                                                     <button className={`btn btn-primary rounded-pill w-100`}>View them
                                                     </button>
@@ -115,7 +116,7 @@ const StudentCourseDashboard = () => {
                                             <div className="card-body">
                                                 <h5 className="card-title fw-bold">🎥 Video Lectures</h5>
                                                 <p className="card-text">Watch engaging lectures and tutorials.</p>
-                                                <p className="text-muted">Total 5 videos</p>
+                                                <p className="text-muted">Total {course.videos.length} videos</p>
                                                 <Link to='/student-course-videos' state={{theme: theme, videoIdArray:course.videos, courseId:courseId}}>
                                                     <button className={`btn btn-success rounded-pill w-100`}>Watch Now
                                                     </button>
@@ -130,7 +131,7 @@ const StudentCourseDashboard = () => {
                                             <div className="card-body">
                                                 <h5 className="card-title fw-bold">📝 Assignments</h5>
                                                 <p className="card-text">Complete and submit your assignments.</p>
-                                                <p className="text-muted">Total 4 Assignments</p>
+                                                <p className="text-muted">Total {course.assignments.length} Assignments</p>
                                                 <Link to='/student-course-assignments' state={{theme: theme, assignmentIdArray:course.assignments, courseId:courseId}}>
                                                     <button className={`btn btn-danger rounded-pill w-100`}>View
                                                         Assignments
@@ -146,7 +147,7 @@ const StudentCourseDashboard = () => {
                                             <div className="card-body">
                                                 <h5 className="card-title fw-bold">🧩 Quizzes</h5>
                                                 <p className="card-text">Test your knowledge with quizzes.</p>
-                                                <p className="text-muted">Total 5 Quizzes</p>
+                                                <p className="text-muted">Total {course.quizzes.length} Quizzes</p>
                                                 <Link to='/student-course-quizzes' state={{theme: theme, quizIdArray:course.quizzes, courseId:courseId}}>
                                                     <button className={`btn btn-warning rounded-pill w-100`}>Take a
                                                         Quiz
@@ -167,7 +168,7 @@ const StudentCourseDashboard = () => {
                                             <div className="card-header"
                                                  style={{fontSize: '1.70rem', fontWeight: 'bold'}}>📅 Upcoming Activities
                                             </div>
-                                            <div className="card-body" style={{overflowY: 'auto', maxHeight: '300px'}}>
+                                            <div className="card-body" style={{overflowY: 'auto', height: '300px'}}>
                                                 <ul className="list-group list-group-flush">
                                                     <li
                                                         className={`list-group-item ${theme === "dark" ? "bg-secondary text-white" : ""}`}>

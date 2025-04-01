@@ -13,11 +13,11 @@ const AllLecture = () => {
     // Combined Lecture Data (ID, Title, and Content in one structure)
     const [lectures, setLectures] = useState([]);
     const [currentLecture, setCurrentLecture] = useState(null); // Default
-
-
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-  
+    const currUserRole = localStorage.getItem('userRole');
+    const btnLink = currUserRole === 'STUDENT' ? '/student-course-dashboard' : '/teacher-course-dashboard';
+
     //---------------------------------------
     useEffect(() => {
         const fetchLectures = async () => {
@@ -27,19 +27,19 @@ const AllLecture = () => {
             if (!lectureIdArray) {
               setLoading(false);
               setError("No lectures available.");
+              console.log("No lecture")
               return;
             }
 
             try {
-                let currUserRole = localStorage.getItem('userRole');
                 let token = localStorage.getItem('token');
-
+                console.log("token accessed")
                 if (currUserRole !== 'STUDENT' && currUserRole !== 'TEACHER') {
                     setError("You are not authorized to access these lectures.");
                     setLoading(false);
                     return;
                 }
-
+                console.log("role passed")
                 const response = await fetch(`${import.meta.env.VITE_EDUSHARE_BACKEND_URL}/api/lectures/alllecturespercourse/${courseId}`, {
                     method: 'GET',
                     headers: {
@@ -49,7 +49,7 @@ const AllLecture = () => {
                         "Accept": "application/json",
                     }
                 });
-
+                // console.log(response)
                 if (!response.ok) {
                     throw new Error('Failed to fetch lectures');
                 }
@@ -59,6 +59,7 @@ const AllLecture = () => {
                     setError("No lectures available.");
                 } else {
                     setLectures(result.data);
+                    setCurrentLecture(result.data[0]);
                 }
             } catch (err) {
                 setError(err.message);
@@ -70,13 +71,13 @@ const AllLecture = () => {
     }, [courseId]);
 
     //---------------------------------------
-    // Intially setting up the current lecture
-    useEffect(() => {
-      console.log(lectures);
-      if (lectures.length > 0) {
-        setCurrentLecture(lectures[0]);
-      }
-    }, [lectures]);
+    // // Intially setting up the current lecture
+    // useEffect(() => {
+    //   console.log(lectures);
+    //   if (lectures.length > 0) {
+    //     setCurrentLecture(lectures[0]);
+    //   }
+    // }, [lectures]);
 
     // Theme-based styling
     const isDark = theme === "dark";
@@ -90,11 +91,11 @@ const AllLecture = () => {
                 <div className="vh-100" style={{background: backgroundStyle, overflowX: 'hidden'}}>
                     {/* Navbar */}
                     <nav
-                        className={`navbar navbar-expand-lg ${theme === "dark" ? "bg-dark navbar-dark" : "bg-light navbar-light"} shadow`}>
+                        className={`navbar navbar-expand-lg ${theme === "light" ? "bg-dark navbar-dark" : "bg-light navbar-light"} shadow`}>
                         <div className="container-fluid">
                           <img src={scholarship} alt='logo' style={{maxHeight: '35px'}}/>
                           <span className="navbar-brand fw-bold">EduShare</span>
-                          <button className="btn btn-outline-primary" onClick={() => navigate('/student-course-dashboard', { state: { courseId }})}>
+                          <button className="btn btn-primary rounded-pill" onClick={() => navigate(btnLink, { state: { courseId }})}>
                             ← Course
                           </button>
                         </div>
@@ -105,11 +106,12 @@ const AllLecture = () => {
                             <ul className="list-group">
                                 {lectures.map((lecture) => (
                                     <li
-                                        key={lecture.id}
-                                        className={`list-group-item ${currentLecture && currentLecture.id === lecture.id ? "active" : ""}`}
+                                        key={lecture._id}
+                                        className={`list-group-item ${currentLecture._id === lecture._id ? "active" : ""}`}
                                         onClick={() => setCurrentLecture(lecture)}
                                         style={{cursor: 'pointer'}}
                                     >
+                                        <span>{lecture.id}</span>
                                       {lecture.title}
                                     </li>
                                 ))}
@@ -147,7 +149,7 @@ function LectureContent({isDark, currentLecture}) {
           setLoading(true);
           setError(null);
           let token = localStorage.getItem('token');
-          const response = await fetch(`${import.meta.env.REACT_APP_EDUSHARE_BACKEND_URL}/api/content/lectures/`, {
+          const response = await fetch(`${import.meta.env.VITE_EDUSHARE_BACKEND_URL}/api/content/lectures/`, {
             method: 'POST',
             headers: {
               'Authorization': `Bearer ${token}`,
@@ -163,16 +165,20 @@ function LectureContent({isDark, currentLecture}) {
           const result = await response.json();
           console.log(result);
           // Purge the lecture data to remove unnecessary or invalid items
-          let LectureData = result.content;
-          // rawLectureData = rawLectureData.slice(0, -4);// there were three extra backticks at the end
-          console.log('lecture string: '+LectureData);
-          // let lectureArray = JSON.parse(rawLectureData);
-          // console.log(lectureArray);
-          setLectureContent(LectureData); // Set only valid lectures
+          let lectureData = result.content;
+          if(lectureData) {
+              console.log('lecture data arrived from backend');
+              setLoading(false);
+          } else {
+              console.log('lecture data not arrived from backend');
+          }
+
+          setLectureContent(lectureData); // Set only valid lectures
         } catch (error) {
           setError(error.message);
+            setLoading(false);
         } finally {
-          setLoading(false);
+          // setLoading(false);
         }
       }
     };

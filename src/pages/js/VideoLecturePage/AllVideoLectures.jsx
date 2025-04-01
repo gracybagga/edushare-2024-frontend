@@ -16,6 +16,8 @@ const AllVideoLectures = () => {
   const [selectedVideo, setSelectedVideo] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const currUserRole = localStorage.getItem('userRole');
+  const btnLink = currUserRole === 'STUDENT' ? '/student-course-dashboard' : '/teacher-course-dashboard';
 
   useEffect(() => {
       const fetchVideos = async () => {
@@ -27,7 +29,6 @@ const AllVideoLectures = () => {
               setError("No videos available.");
               return;
           }
-          let currUserRole = localStorage.getItem('userRole');
           console.log(currUserRole);
 
           if (currUserRole !== 'STUDENT' && currUserRole !== 'TEACHER') {
@@ -59,7 +60,7 @@ const AllVideoLectures = () => {
                   throw new Error("No videos available.");
               }
               setVideos(result.data);
-              //setSelectedVideo(result.data[0]);
+              setSelectedVideo(result.data[0]);
               console.log('Videos set successfully:', result.data);
           } catch (err) {
               setError(err.message);
@@ -70,13 +71,13 @@ const AllVideoLectures = () => {
       fetchVideos();
   }, [courseId]);
 
-    // Intially setting up the current videos
-    useEffect(() => {
-        console.log('videos length->' + videos.length)
-        if (videos.length > 0) {
-            setSelectedVideo(videos[0]);
-        }
-    }, [videos]);
+    // // Intially setting up the current videos
+    // useEffect(() => {
+    //     console.log('videos length->' + videos.length)
+    //     if (videos.length > 0) {
+    //         setSelectedVideo(videos[0]);
+    //     }
+    // }, [videos]);
 
   // Theme-based styling
   const isDark = theme === "dark";
@@ -92,11 +93,11 @@ const AllVideoLectures = () => {
               <div className="vh-100" style={{background: backgroundStyle, overflowX: 'hidden'}}>
                   {/* Navbar */}
                   <nav
-                      className={`navbar navbar-expand-lg ${isDark ? "bg-dark navbar-dark" : "bg-light navbar-light"} shadow`}>
+                      className={`navbar navbar-expand-lg ${!isDark ? "bg-dark navbar-dark" : "bg-light navbar-light"} shadow`}>
                       <div className="container-fluid">
                           <img src={scholarship} alt='logo' style={{maxHeight: '35px'}}/>
                           <span className="navbar-brand fw-bold">EduShare</span>
-                          <button className="btn btn-outline-primary" onClick={() => navigate('/student-course-dashboard', { state: { courseId }})}>
+                          <button className="btn btn-primary rounded-pill" onClick={() => navigate(btnLink, { state: { courseId }})}>
                               ← Course
                           </button>
                       </div>
@@ -108,8 +109,8 @@ const AllVideoLectures = () => {
                           <ul className="list-group">
                               {videos.map((video, index) => (
                                   <li
-                                      key={index}
-                                      className={`list-group-item ${selectedVideo.id === video.id ? "active" : ""}`}
+                                      key={video._id}
+                                      className={`list-group-item ${selectedVideo._id === video._id ? "active" : ""}`}
                                       onClick={() => setSelectedVideo(video)}
                                       style={{cursor: "pointer"}}
                                   >

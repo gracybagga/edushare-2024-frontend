@@ -101,7 +101,7 @@ const TeacherCourseDashboard = () => {
                                             <div className="card-body">
                                                 <h5 className="card-title fw-bold">📚 Lecture Notes</h5>
                                                 <p className="card-text">Read engaging lecture notes.</p>
-                                                <p className="text-muted">Total 5 Lecture notes</p>
+                                                <p className="text-muted">Total {course.lectures.length} Lecture notes</p>
                                                 <Link to='/teacher-course-lectures' state={{theme: theme, courseId:course._id}}>
                                                     <button className={`btn btn-primary rounded-pill w-100 mb-1`}>View
                                                         them
@@ -123,7 +123,7 @@ const TeacherCourseDashboard = () => {
                                             <div className="card-body">
                                                 <h5 className="card-title fw-bold">🎥 Video Lectures</h5>
                                                 <p className="card-text">Watch engaging lectures and tutorials.</p>
-                                                <p className="text-muted">Total 5 videos</p>
+                                                <p className="text-muted">Total {course.videos.length} videos</p>
                                                 <Link to='/teacher-course-videos' state={{theme: theme, courseId:course._id}}>
                                                     <button className={`btn btn-success rounded-pill w-100 mb-1`}>Watch
                                                         Now
@@ -145,7 +145,7 @@ const TeacherCourseDashboard = () => {
                                             <div className="card-body">
                                                 <h5 className="card-title fw-bold">📝 Assignments</h5>
                                                 <p className="card-text">Complete and submit your assignments.</p>
-                                                <p className="text-muted">Total 4 Assignments</p>
+                                                <p className="text-muted">Total {course.assignments.length} Assignments</p>
                                                 <Link to='/teacher-course-assignments' state={{theme: theme, courseId:course._id}}>
                                                     <button className={`btn btn-danger rounded-pill w-100 mb-1`}>View
                                                         Assignments
@@ -180,7 +180,7 @@ const TeacherCourseDashboard = () => {
                                             <div className="card-body">
                                                 <h5 className="card-title fw-bold">🧩 Quizzes</h5>
                                                 <p className="card-text">Test your knowledge with quizzes.</p>
-                                                <p className="text-muted">Total 5 Quizzes</p>
+                                                <p className="text-muted">Total {course.quizzes.length} Quizzes</p>
                                                 <Link to='/teacher-course-quizzes' state={{theme: theme, courseId:course._id}}>
                                                     <button className={`btn btn-warning rounded-pill w-100 mb-1`}>Take a
                                                         Quiz
