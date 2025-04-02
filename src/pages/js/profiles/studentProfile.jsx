@@ -116,8 +116,6 @@ function StudentProfile() {
                                             <strong>Country:</strong> {profileData.country}</li>
                                         <li className={currentTheme.listItem}><strong>ZIP:</strong> {profileData.zip}
                                         </li>
-                                        <li className={currentTheme.listItem}><strong>Date
-                                            Joined:</strong> {profileData.dateJoined}</li>
                                     </ul>
                                 </div>
 
